@@ -32,53 +32,60 @@ app.use( passport.session() )
 
 // Strategy -------------------
 
-// passport.use( new Auth0Strategy( {
-//     domain: process.env.AUTH_DOMAIN,
-//     clientID: process.env.AUTH_CLIENT_ID,
-//     clientSecret: process.env.AUTH_CLIENT_SECRET,
-//     callbackURL: process.env.AUTH_CALLBACK_URL
-// }, function( acessToken, refreshToken, extraParams, profile, done ) {
-//     const db = app.get( 'db' )
-//     let userData = profile._json, // coming from google. Find out what it is for FB and other ones you want to use for login.
-//     auth_id = userData.user_id.split('|')[1]
+passport.use( new Auth0Strategy( {
+    domain: process.env.AUTH_DOMAIN,
+    clientID: process.env.AUTH_CLIENT_ID,
+    clientSecret: process.env.AUTH_CLIENT_SECRET,
+    callbackURL: process.env.AUTH_CALLBACK_URL
+}, function( acessToken, refreshToken, extraParams, profile, done ) {
+    const db = app.get( 'db' )
+    let userData = profile._json, // coming from google. Find out what it is for FB and other ones you want to use for login.
+    auth_id = userData.user_id.split('|')[1]
 
-// }))
+    db.find_user( [auth_id] ).then( user => {
+        if ( user[0] ) {
+            return done( null, user[0].id )
+        } else {
+            db.create_user( [ userData.name, userData.email, auth_id, userData.picture ] )
+            .then( user => done( null, user[0].id ) )
+        }
+    } )
+
+} ) )
 
 // Endpoints -------------------
 
 // Auth
-app.get( '/auth', controller.get_auth )
-app.get( '/auth/callback', controller.get_auth_callback)
+app.get( '/auth', ( req, res, next ) => passport.authenticate( 'auth0' )  )
+app.get( '/auth/callback', passport.authenticate( 'auth0', {
+    successRedirect: 'http://localhost:3000/private',
+    failureRedirect: 'http://localhost:3000/#/'
+    } ) )
 
 passport.serializeUser( ( ID, done ) => done( null, ID ) ) // saves user id to session
 
 passport.deserializeUser( ( ID, done ) => {
     const db = app.get( 'db' )
-    db.find_user_by_session( [ID] )
+    db.find_user_session( [ID] )
         .then( user => {
             done( null, user[0] )
-        }) // remember to make find_user_by_session.sql query
-})
+        } )
+} )
 
-app.get( '/auth/verify', controller.verify ) // used for auth and also to get info for profile view
+app.get( '/auth/verify', controller.verify ) // used for auth and also to get updated info for profile view
 
 app.get( '/auth/logout', controller.logout )
 
 // User
 
-app.put ( '/user/updateUser/:id', ) // finish updating user
+app.put( '/user/updateUser/:id', controller.updateUser )
 
 // Shop
 
-app.get ( '/products', ( req, res, next ) => {
-    let status = 200,
-        db = app.get( 'db' )
+app.get( '/products', controller.getProducts ) 
 
-    db.get_products( [req.body] ).then( products => {
-        res.status( status ).send( products )
-    }) // make get_products query
+// Test
 
-    
-}) 
+app.get( '/users', controller.getUsers )
 
 app.listen( process.env.SERVER_PORT, () => console.log( `<('.'<) ${process.env.SERVER_PORT} (>'.')> ` ))
