@@ -12,7 +12,8 @@ create table users (
     id serial primary key,
     name_last text not null,
     name_first text not null,
-    phone text not null,
+    email text not null,
+    phone text,
     user_type text,
     auth_id text,
     img text

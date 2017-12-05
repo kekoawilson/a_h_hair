@@ -1,0 +1,49 @@
+.Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    width: 100vw;
+}
+
+.menu_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 5vh;
+    width: 10vw;
+}
+
+.cart_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 5vh;
+    width: 10vw;
+}
+
+.menu {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+}
+
+.cart {
+    height: 20px;
+    width: 20px;
+    
+}
+
+.sign-in_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 5vh;
+    width: 14vw;
+    font-size: 12px;
+}
+
+.sign-in {
+    margin-right: 10px;
+}
