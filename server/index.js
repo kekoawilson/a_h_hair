@@ -46,7 +46,7 @@ passport.use( new Auth0Strategy( {
         if ( user[0] ) {
             return done( null, user[0].id )
         } else {
-            db.create_user( [ userData.name, userData.email, auth_id, userData.picture ] )
+            db.create_user( [ userData.family_name, userData.given_name, userData.email, auth_id, userData.picture ] )
             .then( user => done( null, user[0].id ) )
         }
     } )
@@ -58,7 +58,7 @@ passport.use( new Auth0Strategy( {
 // Auth
 app.get( '/auth', ( req, res, next ) => passport.authenticate( 'auth0' )  )
 app.get( '/auth/callback', passport.authenticate( 'auth0', {
-    successRedirect: 'http://localhost:3000/private',
+    successRedirect: 'http://localhost:3000/',
     failureRedirect: 'http://localhost:3000/#/'
     } ) )
 

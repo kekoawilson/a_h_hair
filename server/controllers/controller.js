@@ -2,11 +2,14 @@ module.exports = {
     
     verify( req, res, next ) {
         let response = req.user,
-            status = 200
+            status = 200,
+            db = req.app.get( 'db' )
         
-        !response && ( response = "LOGIN REQUIRED", status = 403) 
+        if( !response ) {
+          return res.status( 401 ).send( 'LOGIN REQUIRED' )
+        }
         
-        res.status( status ).send( response ) // not finished
+        db.find_user_session( [response.id] ).then( user => res.send( user ) )
     },
 
     logout ( req, res, next ) {
@@ -15,15 +18,21 @@ module.exports = {
     },
 
     updateUser ( req, res, next ) {
-        const db = req.app.get( 'db' ),
-        update = req.body
+        let user, status = 200
 
-        db.update_user( [
-            update.name_last,
-            update.name_first,
-            update.email,
-            update.phone
-        ] )
+        db.find_user_session( [ req.user ] ).then( obj => {
+            user = obj.data[0]
+        } ).catch( err => user = err )
+
+        let updatedInfo = req.body // coming from front end state. when pushed to backend it becomes req.body.
+            , updatedUser = Object.assign( {}, user, updatedInfo )
+
+        db.update_user( [...updateUser] ).then( obj => {
+            user = obj.data[0]
+        } ).catch( err => user = err)
+
+        !user.id && ( status = 404 )
+        res.status( status ).send( user )
     },
 
     getProducts( req, res, next ) {
@@ -36,6 +45,12 @@ module.exports = {
         const db = req.app.get( 'db' )
 
         db.get_users( [req.body] ).then( users => res.send( users ) )
+    },
+
+    getAppts( req, res, next ) {
+        const db = req.app.get( 'db' )
+
+        db.get_appointments( [req.body] ).then( appts => res.send( appts ) )
     },
 
     checkAdmin( req, res, next ) {
