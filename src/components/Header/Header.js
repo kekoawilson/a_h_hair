@@ -20,7 +20,7 @@ class Header extends Component {
         </div>
 
         <div className='sign-in_container'>
-          <a href={ process.env.REACT_APP_LOGIN }><button>Sign in</button></a>
+          <a href={ process.env.AHH_APP_LOGIN }><button>Sign in</button></a>
         </div>
 
 

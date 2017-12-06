@@ -84,6 +84,8 @@ app.put( '/user/updateUser/:id', controller.updateUser )
 
 app.get( '/products', controller.getProducts ) 
 
+
+
 // Test
 
 app.get( '/users', controller.getUsers )

@@ -43,3 +43,11 @@ create table appointments (
 
 insert into appointments ( appt_date, appt_time, appt_location, appt_type )
 values ( );
+
+create table photos (
+    photo_id serial primary key,
+    photo_url text not null
+);
+
+insert into photos ( photo_url )
+    values ( );
