@@ -4,7 +4,7 @@ import './Header.css';
 
 import menu from '../../assets/002-menu.svg';
 import cart from '../../assets/001-cart-of-ecommerce.svg';
-// import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.png';
 
 
 class Header extends Component {
@@ -15,12 +15,16 @@ class Header extends Component {
           <img className='menu' src={ menu } alt='Hamburger menu icon' />
         </div>
 
+        <div className='logo-container'>
+          <img className='logo' src={ logo } alt='Addee Hunt Hair logo' />
+        </div>
+
         <div className='cart_container'>
           <img className='cart' src={ cart } alt='Shopping cart icon' />
         </div>
 
         <div className='sign-in_container'>
-          <a href={ process.env.REACT_APP_LOGIN }><button>Sign in</button></a>
+          <a href={ process.env.AHH_APP_LOGIN }><button>Sign in</button></a>
         </div>
 
 
