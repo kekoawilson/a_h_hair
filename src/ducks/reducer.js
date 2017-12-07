@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const initialState = {
     userData: {},
     products: [],
@@ -48,8 +47,7 @@ export function removeFromShoppingCart( productIndex ) {
 export function getAllProducts( products ) {
     return {
         type: GET_ALL_PRODUCTS,
-        payload: products
-    }
+        payload: axios.get( '/shop' )
 }
 
 // Reducer
@@ -57,22 +55,24 @@ export function getAllProducts( products ) {
 export default function reducer( state = initialState, action ) {
     switch ( action.type ) {
         case GET_USER + '_FULFILLED':
-            return Object.assign( ( {}, state, { userData: action.payload } ) )
 
-        case GET_ALL_PRODUCTS_PENDING:
-            return Object.assign( ( {}, state, { loading: true } ) )
+            return Object.assign( {}, state, { userData: action.payload } )
 
-        case GET_ALL_PRODUCTS_FULFILLED:
-            return Object.assign( ( {}, state, { loading: false, products: action.payload } ) )
+        case GET_ALL_PRODUCTS + '_PENDING':
+            return Object.assign( {}, state, { loading: true } )
+
+        case GET_ALL_PRODUCTS + '_FULFILLED':
+            return Object.assign( {}, state, { loading: false, products: action.payload.data } )
 
         case ADD_TO_SHOPPING_CART:
-            return Object.assign( ( {}, state, { shoppingCart: [...state.shoppingCart, action.payload] } ) )
+            return Object.assign( {}, state, { shoppingCart: [...state.shoppingCart, action.payload] } )
 
         case REMOVE_FROM_SHOPPING_CART:
             let newArray = state.shoppingCart.slice()
             newArray.splice( action.index, 1 )
-            return Object.assign( ( {}, state, { shoppingCart: newArray } ) )
-    
+
+            return Object.assign( {}, state, { shoppingCart: newArray } )
+
         default:
             return state;
     }
