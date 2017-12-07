@@ -48,7 +48,6 @@ export function getAllProducts( products ) {
     return {
         type: GET_ALL_PRODUCTS,
         payload: axios.get( '/shop' )
-    }
 }
 
 // Reducer
@@ -56,6 +55,7 @@ export function getAllProducts( products ) {
 export default function reducer( state = initialState, action ) {
     switch ( action.type ) {
         case GET_USER + '_FULFILLED':
+
             return Object.assign( {}, state, { userData: action.payload } )
 
         case GET_ALL_PRODUCTS + '_PENDING':
@@ -70,8 +70,9 @@ export default function reducer( state = initialState, action ) {
         case REMOVE_FROM_SHOPPING_CART:
             let newArray = state.shoppingCart.slice()
             newArray.splice( action.index, 1 )
+
             return Object.assign( {}, state, { shoppingCart: newArray } )
-    
+
         default:
             return state;
     }

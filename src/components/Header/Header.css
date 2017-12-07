@@ -17,7 +17,7 @@
 
 .cart_container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     height: 5vh;
     width: 10vw;
@@ -37,7 +37,7 @@
 
 .sign-in_container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     height: 5vh;
     width: 14vw;
@@ -46,4 +46,17 @@
 
 .sign-in {
     margin-right: 10px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    width: 10vw;
+}
+
+.logo {
+    height: 25px;
+    /* width: 25px; */
 }

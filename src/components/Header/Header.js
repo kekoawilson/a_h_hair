@@ -4,7 +4,7 @@ import './Header.css';
 
 import menu from '../../assets/002-menu.svg';
 import cart from '../../assets/001-cart-of-ecommerce.svg';
-// import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.png';
 
 
 class Header extends Component {
@@ -13,6 +13,10 @@ class Header extends Component {
       <div className="Header">
         <div className='menu_container'>
           <img className='menu' src={ menu } alt='Hamburger menu icon' />
+        </div>
+
+        <div className='logo-container'>
+          <img className='logo' src={ logo } alt='Addee Hunt Hair logo' />
         </div>
 
         <div className='cart_container'>
