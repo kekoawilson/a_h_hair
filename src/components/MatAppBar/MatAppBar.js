@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem'
-import IconButton from 'material-ui/IconButton';
+import { AppBar, Drawer, MenuItem, IconButton, Avatar } from 'material-ui';
 import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart';
 import Person from 'material-ui/svg-icons/social/person';
+import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg';
 
 
 
@@ -24,21 +22,20 @@ class MatAppBar extends Component {
         
     }
 
-    goToAuth() {
-        window.location.replace(process.env.REACT_APP_LOGIN)
-    }
+    goToAuth = () => window.location.replace(process.env.REACT_APP_LOGIN)
 
-    goToShop() {
-        window.location.replace('http://localhost:3000/#/shop') // what should i put here?
-    }
+    goToShop = () => window.location.replace('http://localhost:3000/#/cart') // what should i put here?
 
     openDrawer = () => this.setState( { open: !this.state.open } )
+
     closeDrawer = () => this.setState( { open: false } )
 
     render() {
 
         const rightButtons = (
             <div >
+                {/*<IconButton >{logo}</IconButton>*/}
+                {/*<Avatar src='../../assets/logo.png' size={ 50 }/>*/} {/* some kind of getStyles magic here */}
                 <IconButton onClick={ this.goToShop }><ShoppingCart/></IconButton>
                 <IconButton onClick={ this.goToAuth }><Person/></IconButton>
             </div>
@@ -61,8 +58,7 @@ class MatAppBar extends Component {
             
             </Drawer>
             <AppBar
-            // img='../../assets/logo.png' 
-            // iconElementLeft={ <IconButton onClick={ this.handleToggle }><NavigationMenu /></IconButton> }
+            // img='../../assets/logo.png'
             showMenuIconButton={ true } // Shows the hamburger menu on the left of the title
             iconElementRight={ rightButtons }
             onLeftIconButtonClick={ this.openDrawer }
