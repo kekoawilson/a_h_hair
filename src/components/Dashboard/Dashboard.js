@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-// import Header from '../Header/Header';
-
+// import axios from 'axios';
 
 class Dashboard extends Component {
+  
+
+  componentWillMount() {
+    // axios.get( '')
+  }
+
+
     render() {
       return (
           <div className="Dashboard">
