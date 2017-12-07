@@ -45,9 +45,11 @@ export function removeFromShoppingCart( productIndex ) {
 }
 
 export function getAllProducts( products ) {
+    const productInfo = axios.get( '/shop' ).then( res => res.data )
     return {
         type: GET_ALL_PRODUCTS,
-        payload: axios.get( '/shop' )
+        payload: productInfo
+    }
 }
 
 // Reducer
@@ -62,7 +64,7 @@ export default function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { loading: true } )
 
         case GET_ALL_PRODUCTS + '_FULFILLED':
-            return Object.assign( {}, state, { loading: false, products: action.payload.data } )
+            return Object.assign( {}, state, { loading: false, products: action.payload } )
 
         case ADD_TO_SHOPPING_CART:
             return Object.assign( {}, state, { shoppingCart: [...state.shoppingCart, action.payload] } )

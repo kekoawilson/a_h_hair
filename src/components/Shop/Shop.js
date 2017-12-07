@@ -7,9 +7,9 @@ import GridListEx from '../GridList/GridList';
 
 class Shop extends Component {
 
-    componentDidMount() {
-      this.props.getAllProducts();
-    }
+    // componentDidMount() {
+    //   this.props.getAllProducts();
+    // }
 
     render() {
       // console.log( 'props', this.props, "\n\n" );

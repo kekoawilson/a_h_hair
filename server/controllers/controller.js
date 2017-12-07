@@ -36,19 +36,19 @@ module.exports = {
     },
 
     getProducts( req, res, next ) {
-        const db = req.app.get( 'db' )
+        let db = req.app.get( 'db' )
 
         db.get_products( [req.body] ).then( products => res.send( products ) )
     },
 
     getUsers( req, res, next ) {
-        const db = req.app.get( 'db' )
+        let db = req.app.get( 'db' )
 
         db.get_users( [req.body] ).then( users => res.send( users ) )
     },
 
     getAppts( req, res, next ) {
-        const db = req.app.get( 'db' )
+        let db = req.app.get( 'db' )
 
         db.get_appointments( [req.body] ).then( appts => res.send( appts ) )
     },
