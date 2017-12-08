@@ -41,6 +41,12 @@ module.exports = {
         db.get_products( [req.body] ).then( products => res.send( products ) )
     },
 
+    getServices( req, res, next ) {
+        let db = req.app.get( 'db' )
+    
+        db.get_services( [req.body] ).then( services => res.send( services ) )
+    },
+
     getUsers( req, res, next ) {
         let db = req.app.get( 'db' )
 

@@ -44,6 +44,7 @@ create table appointments (
 insert into appointments ( appt_date, appt_time, appt_location, appt_type )
 values ( );
 
+
 create table photos (
     photo_id serial primary key,
     photo_url text not null
@@ -51,3 +52,25 @@ create table photos (
 
 insert into photos ( photo_url )
     values ( );
+
+
+create table services (
+    services text,
+    price text 
+);
+
+insert into availableservices ( services, price ) values ( $$Women's Haircut & Style$$, '$25+');
+insert into availableservices ( services, price ) values ( $$Men's Haircut$$, '$15');
+insert into availableservices ( services, price ) values ( $$Children's Haircut$$, '$15');
+insert into availableservices ( services, price ) values ( $$Men's Color$$, '$25');
+insert into availableservices ( services, price ) values ( 'Updo', '$30');
+insert into availableservices ( services, price ) values ( 'Bridal Updo', '$50');
+insert into availableservices ( services, price ) values ( 'All Over Color', '$60+');
+insert into availableservices ( services, price ) values ( 'Root Touch Up', '$50+');
+insert into availableservices ( services, price ) values ( 'Bleach and Tone', '$80+');
+insert into availableservices ( services, price ) values ( 'Partial Foil Weave', '$65+');
+insert into availableservices ( services, price ) values ( 'Full Foil Weave', '$85+');
+insert into availableservices ( services, price ) values ( 'Balayage', '$90+');
+insert into availableservices ( services, price ) values ( 'Color Correction', '$90+');
+insert into availableservices ( services, price ) values ( 'Olaplex', 'Add $15');
+insert into availableservices ( services ) values ( '- Long Hair Extra -');

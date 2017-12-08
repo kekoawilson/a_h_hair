@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import { connect } from 'react-redux';
-import { getAllProducts } from '../../ducks/reducer';
+// import { getAllProducts } from '../../ducks/reducer';
 import MatGridList from '../MatUI/MatGridList';
 
 

@@ -1,121 +1,140 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getAllServices } from '../../ducks/reducer';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
 
-const tableData = [
-    {
-        service: "Women's Haircut & Style",
-        price: '$25+'
-    },
-    
-    {
-        service: "Men's Haircut",
-        price: '$15'
-    },
-    
-    {
-        service: "Children's Haircut",
-        price: '$15'
-    },
-    
-    {
-        service: "Men's Color",
-        price: '$25'
-    },
-    
-    {
-        service: "Updo",
-        price: '$30'
-    },
-    
-    {
-        service: "Bridal Updo",
-        price: '$50'
-    },
-    
-    {
-        service: "All Over Color",
-        price: '$60+'
-    },
-    
-    {
-        service: "Root Touch Up",
-        price: '$50+'
-    },
-    
-    {
-        service: "Bleach and Tone",
-        price: '$80+'
-    },
-    
-    {
-        service: "Partial Foil Weave",
-        price: '$65+'
-    },
-    
-    {
-        service: "Full Foil Weave",
-        price: '$85+'
-    },
-    
-    {
-        service: "Balayage",
-        price: '$90+'
-    },
-    
-    {
-        service: "Color Correction",
-        price: '$90+'
-    },
-    
-    {
-        service: "Olaplex",
-        price: 'Add $15'
-    },
-    
-    {
-        service: "- Long Hair Extra -",
-        price: ''
-    },
-    
-]
-
 class MatTable extends Component {
-    constructor() {
-        super()
-
+    constructor( props ) {
+        super( props )
+        
     }
-
-  render() {
-    return (
-        <Table 
-        selectable={ true }
-        multiSelectable={ true }
-        // height='300px'
-        showCheckboxes={ true }
-        fixedHeader={ true }>
-        <TableHeader
-          showCheckboxes={ true }
-        >
-          <TableRow >
+    
+    componentDidMount() {
+        this.props.getAllServices()
+    }
+    
+    render() {
+        return (
+            <Table 
+            selectable={ true }
+            multiSelectable={ true }
+            showCheckboxes={ true }
+            fixedHeader={ true }>
+            <TableHeader
+            showCheckboxes={ true }
+            >
+            <TableRow >
             <TableHeaderColumn >Service</TableHeaderColumn>
             <TableHeaderColumn >Price</TableHeaderColumn>
-          </TableRow>
-        </TableHeader>
-        <TableBody 
-        stripedRows={ true }
-        deselectOnClickaway={ true }
-        >
-          { tableData.map( ( row, i ) => (
-            <TableRow key={ i }>
-              <TableRowColumn>{ row.service }</TableRowColumn>
-              <TableRowColumn>{ row.price }</TableRowColumn>
             </TableRow>
-            ) ) }
+            </TableHeader>
+            <TableBody 
+            stripedRows={ true }
+            deselectOnClickaway={ true }
+            >
+            { this.props.services.map( ( row, i ) => {
+                return ( 
+                    <TableRow key={ i }>
+                    <TableRowColumn>{ row.services }</TableRowColumn>
+                    <TableRowColumn>{ row.price }</TableRowColumn>
+                </TableRow>
+            ) } ) }
         </TableBody>
         </Table>
     );
-  }
+}
 }
 
-export default MatTable;
+let outputAction = {
+    getAllServices
+}
+
+function mapStateToProps( state ) {
+    return {
+        services: state.services
+    }
+}
+
+export default connect( mapStateToProps, outputAction )( MatTable );
+
+
+
+
+    // const tableData = [
+    //     {
+    //         services: "Women's Haircut & Style",
+    //         price: '$25+'
+    //     },
+        
+    //     {
+    //         services: "Men's Haircut",
+    //         price: '$15'
+    //     },
+        
+    //     {
+    //         services: "Children's Haircut",
+    //         price: '$15'
+    //     },
+        
+    //     {
+    //         services: "Men's Color",
+    //         price: '$25'
+    //     },
+        
+    //     {
+    //         services: "Updo",
+    //         price: '$30'
+    //     },
+        
+    //     {
+    //         services: "Bridal Updo",
+    //         price: '$50'
+    //     },
+        
+    //     {
+    //         services: "All Over Color",
+    //         price: '$60+'
+    //     },
+        
+    //     {
+    //         services: "Root Touch Up",
+    //         price: '$50+'
+    //     },
+        
+    //     {
+    //         services: "Bleach and Tone",
+    //         price: '$80+'
+    //     },
+        
+    //     {
+    //         services: "Partial Foil Weave",
+    //         price: '$65+'
+    //     },
+        
+    //     {
+    //         services: "Full Foil Weave",
+    //         price: '$85+'
+    //     },
+        
+    //     {
+    //         services: "Balayage",
+    //         price: '$90+'
+    //     },
+        
+    //     {
+    //         services: "Color Correction",
+    //         price: '$90+'
+    //     },
+        
+    //     {
+    //         services: "Olaplex",
+    //         price: 'Add $15'
+    //     },
+        
+    //     {
+    //         services: "- Long Hair Extra -",
+    //         price: ''
+    //     },
+        
+    // ]

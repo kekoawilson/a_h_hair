@@ -84,7 +84,9 @@ app.put( '/user/updateUser/:id', controller.updateUser )
 
 app.get( '/shop', controller.getProducts ) 
 
+// Booking
 
+app.get( '/services', controller.getServices )
 
 // Test
 

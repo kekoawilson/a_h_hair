@@ -15,7 +15,6 @@ import Shop from '../src/components/Shop/Shop.js';
 
 class App extends Component {
   render() {
-    // do you make a route for every view??
     return (
       <HashRouter>
         <div className="App">

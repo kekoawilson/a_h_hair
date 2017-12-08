@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Step, Stepper, StepLabel, RaisedButton, FlatButton, DatePicker } from 'material-ui';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
-import TextField from 'material-ui/TextField';
+// import TextField from 'material-ui/TextField';
 import MatTable from '../MatUI/MatTable'
+import TimeSelector from '../MatUI/MatTimeSelector'
 
 
 class MatStepper extends Component {
@@ -40,8 +41,8 @@ class MatStepper extends Component {
     }
   };
 
-  getStepContent(stepIndex) {
-    switch (stepIndex) {
+  getStepContent( stepIndex ) {
+    switch ( stepIndex ) {
       case 0:
         return (
           <MatTable/>
@@ -52,6 +53,7 @@ class MatStepper extends Component {
             <DatePicker
             hintText='Click Here'
             />
+            <TimeSelector/>
             
           </div>
         );
@@ -74,7 +76,7 @@ class MatStepper extends Component {
         <div style={contentStyle}>
           <p>
             <a
-              href="#"
+            //   href="#"
               onClick={(event) => {
                 event.preventDefault();
                 this.setState({stepIndex: 0, finished: false});
@@ -98,7 +100,7 @@ class MatStepper extends Component {
             style={{marginRight: 12}}
           />
           <RaisedButton
-            label={stepIndex === 2 ? 'Finish' : 'Next'}
+            label={stepIndex === 2 ? 'Book It!' : 'Next'}
             primary={true}
             onClick={this.handleNext}
           />
@@ -112,7 +114,9 @@ class MatStepper extends Component {
 
     return (
       <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-        <Stepper activeStep={stepIndex}>
+        <Stepper 
+        activeStep={stepIndex}
+        orientation='vertical'>
           <Step>
             <StepLabel>Choose a Service</StepLabel>
           </Step>

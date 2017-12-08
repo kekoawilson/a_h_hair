@@ -3,7 +3,8 @@ import axios from 'axios';
 const initialState = {
     userData: {},
     products: [],
-    shoppingCart: []
+    shoppingCart: [],
+    services: []
 }
 
 // Action Types/ Constants
@@ -14,6 +15,9 @@ const REMOVE_FROM_SHOPPING_CART = 'REMOVE_FROM_SHOPPING_CART'
 const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 const GET_ALL_PRODUCTS_PENDING = 'GET_ALL_PRODUCTS_PENDING'
 const GET_ALL_PRODUCTS_FULFILLED = 'GET_ALL_PRODUCTS_FULFILLED'
+const GET_ALL_SERVICES = 'GET_ALL_SERVICES'
+const GET_ALL_SERVICES_PENDING = 'GET_ALL_SERVICES_PENDING'
+const GET_ALL_SERVICES_FULFILLED = 'GET_ALL_SERVICES_FULFILLED'
 
 // Action Creators
 
@@ -45,10 +49,18 @@ export function removeFromShoppingCart( productIndex ) {
 }
 
 export function getAllProducts( products ) {
-    const productInfo = axios.get( '/shop' ).then( res => res.data )
+    let productInfo = axios.get( '/shop' ).then( res => res.data )
     return {
         type: GET_ALL_PRODUCTS,
         payload: productInfo
+    }
+}
+
+export function getAllServices( services ) {
+    let servicesInfo = axios.get( '/services' ).then( res => res.data ).catch(console.log)
+    return {
+        type: GET_ALL_SERVICES,
+        payload: servicesInfo
     }
 }
 
@@ -74,6 +86,12 @@ export default function reducer( state = initialState, action ) {
             newArray.splice( action.index, 1 )
 
             return Object.assign( {}, state, { shoppingCart: newArray } )
+
+        case GET_ALL_SERVICES + '_PENDING':
+            return Object.assign( {}, state, { loading: true } )
+
+        case GET_ALL_SERVICES + '_FULFILLED':
+            return Object.assign( {}, state, { loading: false, services: action.payload } )
 
         default:
             return state;
