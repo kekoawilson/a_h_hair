@@ -1,0 +1,11 @@
+.profile-box {
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+    width: auto;
+}
+
+.profile-img {
+    height: 60px;
+    width: 60px;
+}

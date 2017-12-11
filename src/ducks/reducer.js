@@ -4,7 +4,8 @@ const initialState = {
     userData: {},
     products: [],
     shoppingCart: [],
-    services: []
+    services: [],
+    photos: []
 }
 
 // Action Types/ Constants
@@ -18,6 +19,9 @@ const GET_ALL_PRODUCTS_FULFILLED = 'GET_ALL_PRODUCTS_FULFILLED'
 const GET_ALL_SERVICES = 'GET_ALL_SERVICES'
 const GET_ALL_SERVICES_PENDING = 'GET_ALL_SERVICES_PENDING'
 const GET_ALL_SERVICES_FULFILLED = 'GET_ALL_SERVICES_FULFILLED'
+const GET_ALL_PHOTOS = 'GET_ALL_PHOTOS'
+const GET_ALL_PHOTOS_PENDING = 'GET_ALL_PHOTOS_PENDING'
+const GET_ALL_PHOTOS_FULFILLED = 'GET_ALL_PHOTOS_FULFILLED'
 
 // Action Creators
 
@@ -41,10 +45,11 @@ export function addToShoppingCart( product ) {
     }
 }
 
-export function removeFromShoppingCart( productIndex ) {
+export function removeFromShoppingCart( product_name ) {
+    console.log( 'reducer', product_name );
     return {
         type: REMOVE_FROM_SHOPPING_CART,
-        payload: productIndex
+        payload: product_name
     }
 }
 
@@ -57,10 +62,18 @@ export function getAllProducts( products ) {
 }
 
 export function getAllServices( services ) {
-    let servicesInfo = axios.get( '/services' ).then( res => res.data ).catch(console.log)
+    let servicesInfo = axios.get( '/services' ).then( res => res.data )
     return {
         type: GET_ALL_SERVICES,
         payload: servicesInfo
+    }
+}
+
+export function getAllPhotos( photos ) {
+    let photosInfo = axios.get( '/photos' ).then( res => res.data )
+    return {
+        type: GET_ALL_PHOTOS,
+        payload: photosInfo
     }
 }
 
@@ -82,8 +95,14 @@ export default function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { shoppingCart: [...state.shoppingCart, action.payload] } )
 
         case REMOVE_FROM_SHOPPING_CART:
-            let newArray = state.shoppingCart.slice()
-            newArray.splice( action.index, 1 )
+            let newArray = state.shoppingCart.slice() // making a copy of state
+            let newIndex = newArray.map( e => e.product_name ).indexOf( action.payload ) // mapping over the new copy of state and returning an obj. entering that obj using e.product_name to get that key off the obj. looking for the where that key exists and checking for matches from action.payload (product_name coming from front end)
+            console.log( newIndex );
+            if( newIndex !== -1 ) {  // saying if there is a match splice it out, if not, do nothing.
+                newArray.splice( newIndex, 1 )
+            } else {
+                console.log( 'does not exist' );
+            }
 
             return Object.assign( {}, state, { shoppingCart: newArray } )
 
@@ -92,6 +111,12 @@ export default function reducer( state = initialState, action ) {
 
         case GET_ALL_SERVICES + '_FULFILLED':
             return Object.assign( {}, state, { loading: false, services: action.payload } )
+
+        case GET_ALL_PHOTOS + '_PENDING':
+            return Object.assign( {}, state, { loading: true } )
+
+        case GET_ALL_PHOTOS + '_FULFILLED':
+            return Object.assign( {}, state, { loading: false, photos: action.payload } )
 
         default:
             return state;

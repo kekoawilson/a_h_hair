@@ -88,6 +88,10 @@ app.get( '/shop', controller.getProducts )
 
 app.get( '/services', controller.getServices )
 
+// Photos
+
+app.get( '/photos', controller.getPhotos )
+
 // Test
 
 app.get( '/users', controller.getUsers )

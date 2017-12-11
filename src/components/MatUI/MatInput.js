@@ -7,7 +7,11 @@ export default class MatInput extends React.Component {
     super(props);
 
     this.state = {
-      value: 'Property Value',
+      value: '',
+      service: [],
+      day: '',
+      meridies: 'am',
+      time: '10:00'
     };
   }
 
@@ -21,18 +25,26 @@ export default class MatInput extends React.Component {
     return (
       <div>
         <TextField
-          id="text-field-controlled"
-          value={this.state.value}
+          id='Service'
+          value={this.state.service}
           onChange={this.handleChange}
         />
+
         <TextField
-          id="text-field-controlled"
-          value={this.state.value}
+          id='Day'        
+          value={this.state.day}
           onChange={this.handleChange}
         />
+
         <TextField
-          id="text-field-controlled"
-          value={this.state.value}
+          id='AM/PM'
+          value={this.state.meridies}
+          onChange={this.handleChange}
+        />
+
+        <TextField
+          id='Time'
+          value={this.state.time}
           onChange={this.handleChange}
         />
       </div>

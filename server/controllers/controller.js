@@ -59,6 +59,12 @@ module.exports = {
         db.get_appointments( [req.body] ).then( appts => res.send( appts ) )
     },
 
+    getPhotos( req, res, next ) {
+        let db = req.app.get( 'db' )
+
+        db.get_photos( [req.body] ).then( photos => res.send( photos ) )
+    },
+
     checkAdmin( req, res, next ) {
         if ( req.user.type === 'admin' ) {
             next()

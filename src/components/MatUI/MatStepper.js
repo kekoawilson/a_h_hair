@@ -4,6 +4,7 @@ import ExpandTransition from 'material-ui/internal/ExpandTransition';
 // import TextField from 'material-ui/TextField';
 import MatTable from '../MatUI/MatTable'
 import TimeSelector from '../MatUI/MatTimeSelector'
+import MatInput from '../MatUI/MatInput'
 
 
 class MatStepper extends Component {
@@ -59,8 +60,7 @@ class MatStepper extends Component {
         );
       case 2:
         return (
-          <p>
-          </p>
+          <MatInput/>
         );
       default:
         return 'You\'re a long way from home sonny jim!';

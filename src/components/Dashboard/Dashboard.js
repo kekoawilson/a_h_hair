@@ -1,23 +1,43 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getAllPhotos } from '../../ducks/reducer';
 // import axios from 'axios';
 
 class Dashboard extends Component {
-  
+  constructor( props ) {
+    super( props )
+  }
 
-  componentWillMount() {
-    // axios.get( '')
+  componentDidMount() {
+    this.props.getAllPhotos()
   }
 
 
     render() {
+      const displayPhotos = this.props.photos.map( ( e, i ) => {
+        return (
+          <div key={ i }>
+          <img src={ e.photo_url }/>
+          </div>
+        )
+      })
       return (
           <div className="Dashboard">
             <h2>Welcome to the Dashboard</h2>
+            { displayPhotos }
             
             
           </div>
       );
     }
   }
+
+  let outputActions = {
+    getAllPhotos
+  }
+
+  function mapStateToProps( state ) {
+    return { photos: state.photos }
+  }
   
-  export default Dashboard;
+  export default connect( mapStateToProps, outputActions )( Dashboard );
