@@ -4,8 +4,11 @@ const initialState = {
     userData: {},
     products: [],
     shoppingCart: [],
-    services: [],
-    photos: []
+    servicesList: [],
+    photos: [],
+    servicesChosen: '',
+    day: '',
+    time: ''
 }
 
 // Action Types/ Constants
@@ -54,7 +57,7 @@ export function removeFromShoppingCart( product_name ) {
 }
 
 export function getAllProducts( products ) {
-    let productInfo = axios.get( '/shop' ).then( res => res.data )
+    let productInfo = axios.get( '/api/shop' ).then( res => res.data )
     return {
         type: GET_ALL_PRODUCTS,
         payload: productInfo
@@ -62,15 +65,15 @@ export function getAllProducts( products ) {
 }
 
 export function getAllServices( services ) {
-    let servicesInfo = axios.get( '/services' ).then( res => res.data )
+    let servicesInfo = axios.get( '/api/services' ).then( res => res.data )
     return {
         type: GET_ALL_SERVICES,
         payload: servicesInfo
     }
 }
 
-export function getAllPhotos( photos ) {
-    let photosInfo = axios.get( '/photos' ).then( res => res.data )
+export function getAllPhotos( photoType ) {
+    let photosInfo = axios.get( `/api/${photoType}` ).then( res => res.data )
     return {
         type: GET_ALL_PHOTOS,
         payload: photosInfo
@@ -97,7 +100,6 @@ export default function reducer( state = initialState, action ) {
         case REMOVE_FROM_SHOPPING_CART:
             let newArray = state.shoppingCart.slice() // making a copy of state
             let newIndex = newArray.map( e => e.product_name ).indexOf( action.payload ) // mapping over the new copy of state and returning an obj. entering that obj using e.product_name to get that key off the obj. looking for the where that key exists and checking for matches from action.payload (product_name coming from front end)
-            console.log( newIndex );
             if( newIndex !== -1 ) {  // saying if there is a match splice it out, if not, do nothing.
                 newArray.splice( newIndex, 1 )
             } else {
@@ -110,7 +112,7 @@ export default function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { loading: true } )
 
         case GET_ALL_SERVICES + '_FULFILLED':
-            return Object.assign( {}, state, { loading: false, services: action.payload } )
+            return Object.assign( {}, state, { loading: false, servicesList: action.payload } )
 
         case GET_ALL_PHOTOS + '_PENDING':
             return Object.assign( {}, state, { loading: true } )

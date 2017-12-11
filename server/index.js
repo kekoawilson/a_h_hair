@@ -78,22 +78,27 @@ app.get( '/auth/logout', controller.logout )
 
 // User
 
-app.put( '/user/updateUser/:id', controller.updateUser )
+app.put( '/api/user/updateUser/:id', controller.updateUser )
 
 // Shop
 
-app.get( '/shop', controller.getProducts ) 
+app.get( '/api/shop', controller.getProducts ) 
 
 // Booking
 
-app.get( '/services', controller.getServices )
+app.get( '/api/services', controller.getServices )
 
 // Photos
 
-app.get( '/photos', controller.getPhotos )
+app.get( '/api/photos', controller.getPhotos )
+
+// Bridals
+
+app.get( '/api/bridal', controller.getPhotos )
+
 
 // Test
 
-app.get( '/users', controller.getUsers )
+app.get( '/api/users', controller.getUsers )
 
 app.listen( process.env.SERVER_PORT, () => console.log( `<('.'<) ${process.env.SERVER_PORT} (>'.')> ` ))

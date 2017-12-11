@@ -33,7 +33,7 @@ class MatTable extends Component {
             stripedRows={ true }
             deselectOnClickaway={ true }
             >
-            { this.props.services.map( ( row, i ) => {
+            { this.props.servicesList.map( ( row, i ) => {
                 return ( 
                     <TableRow key={ i }>
                     <TableRowColumn>{ row.services }</TableRowColumn>
@@ -52,7 +52,7 @@ let outputAction = {
 
 function mapStateToProps( state ) {
     return {
-        services: state.services
+        servicesList: state.servicesList
     }
 }
 

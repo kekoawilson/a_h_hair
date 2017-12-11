@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllPhotos } from '../../ducks/reducer';
-// import axios from 'axios';
 
 class Dashboard extends Component {
   constructor( props ) {
@@ -9,7 +8,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.getAllPhotos()
+    this.props.getAllPhotos( 'photos' )
   }
 
 
@@ -20,7 +19,7 @@ class Dashboard extends Component {
           <img src={ e.photo_url }/>
           </div>
         )
-      })
+      } )
       return (
           <div className="Dashboard">
             <h2>Welcome to the Dashboard</h2>

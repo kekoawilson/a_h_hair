@@ -61,8 +61,13 @@ module.exports = {
 
     getPhotos( req, res, next ) {
         let db = req.app.get( 'db' )
+        let photoType = req.url.split( '/' )[2]
+        if ( photoType === 'photos' ) {
+            db.get_photos( [req.body] ).then( photos => res.send( photos ) )
+        } else {
+            db.get_photos_by_type( [photoType] ).then( photos => res.send( photos ) ) // $1 = bridal
+        }
 
-        db.get_photos( [req.body] ).then( photos => res.send( photos ) )
     },
 
     checkAdmin( req, res, next ) {

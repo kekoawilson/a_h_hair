@@ -10,8 +10,8 @@ export default class MatInput extends React.Component {
       value: '',
       service: [],
       day: '',
-      meridies: 'am',
-      time: '10:00'
+      meridies: '',
+      time: ''
     };
   }
 
@@ -26,7 +26,7 @@ export default class MatInput extends React.Component {
       <div>
         <TextField
           id='Service'
-          value={this.state.service}
+          value={this.props.service}
           onChange={this.handleChange}
         />
 
@@ -37,16 +37,11 @@ export default class MatInput extends React.Component {
         />
 
         <TextField
-          id='AM/PM'
-          value={this.state.meridies}
-          onChange={this.handleChange}
-        />
-
-        <TextField
-          id='Time'
+          id='Time'        
           value={this.state.time}
           onChange={this.handleChange}
         />
+
       </div>
     );
   }
