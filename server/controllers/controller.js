@@ -36,21 +36,38 @@ module.exports = {
     },
 
     getProducts( req, res, next ) {
-        const db = req.app.get( 'db' )
+        let db = req.app.get( 'db' )
 
         db.get_products( [req.body] ).then( products => res.send( products ) )
     },
 
+    getServices( req, res, next ) {
+        let db = req.app.get( 'db' )
+    
+        db.get_services( [req.body] ).then( services => res.send( services ) )
+    },
+
     getUsers( req, res, next ) {
-        const db = req.app.get( 'db' )
+        let db = req.app.get( 'db' )
 
         db.get_users( [req.body] ).then( users => res.send( users ) )
     },
 
     getAppts( req, res, next ) {
-        const db = req.app.get( 'db' )
+        let db = req.app.get( 'db' )
 
         db.get_appointments( [req.body] ).then( appts => res.send( appts ) )
+    },
+
+    getPhotos( req, res, next ) {
+        let db = req.app.get( 'db' )
+        let photoType = req.url.split( '/' )[2]
+        if ( photoType === 'photos' ) {
+            db.get_photos( [req.body] ).then( photos => res.send( photos ) )
+        } else {
+            db.get_photos_by_type( [photoType] ).then( photos => res.send( photos ) ) // $1 = bridal
+        }
+
     },
 
     checkAdmin( req, res, next ) {

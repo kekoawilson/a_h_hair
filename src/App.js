@@ -8,14 +8,13 @@ import Booking from '../src/components/Booking/Booking.js';
 import Bridals from '../src/components/Bridals/Bridals';
 import Cart from '../src/components/Cart/Cart';
 import Dashboard from '../src/components/Dashboard/Dashboard.js';
-import MatAppBar from '../src/components/MatAppBar/MatAppBar';
+import MatAppBar from '../src/components/MatUI/MatAppBar';
 import Profile from '../src/components/Profile/Profile';
 import Shop from '../src/components/Shop/Shop.js';
 
 
 class App extends Component {
   render() {
-    // do you make a route for every view??
     return (
       <HashRouter>
         <div className="App">

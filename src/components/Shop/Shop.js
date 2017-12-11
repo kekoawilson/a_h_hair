@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import { connect } from 'react-redux';
-import { getAllProducts } from '../../ducks/reducer';
-import GridListEx from '../GridList/GridList';
+// import { getAllProducts } from '../../ducks/reducer';
+import MatGridList from '../MatUI/MatGridList';
 
 
 class Shop extends Component {
-
-    componentDidMount() {
-      this.props.getAllProducts();
-    }
 
     render() {
       // console.log( 'props', this.props, "\n\n" );
@@ -29,21 +25,20 @@ class Shop extends Component {
           <div className="Shop">
             <h2>Welcome to the Shop</h2>
             {/* displayProducts */}
-             <GridListEx/>
+             <MatGridList/>
             
           </div>
       );
     }
   }
   
-  let outputActions = {
-    getAllProducts
-  }
+  // let outputActions = {
+  //   getAllProducts
+  // }
 
   function mapStateToProps( state ) {
-    console.log( 'mapping to props', state );
 
     return { products: state.products }
   }
 
-  export default connect( mapStateToProps, outputActions )( Shop );
+  export default connect( mapStateToProps )( Shop );
