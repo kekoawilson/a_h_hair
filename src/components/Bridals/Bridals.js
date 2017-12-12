@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import { getAllPhotos } from '../../ducks/reducer';
 
 class Bridals extends Component {
-  constructor( props ) {
-    super( props )
-  }
 
   componentDidMount() {
     this.props.getAllPhotos( 'bridal' )

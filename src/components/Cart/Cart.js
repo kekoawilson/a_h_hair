@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 
 
 class Cart extends Component {
-  constructor( props ) {
-    super( props )
-    
-  }
   
   render() {
     const displayCart = this.props.shoppingCart.map( ( e, i ) => {

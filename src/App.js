@@ -13,14 +13,17 @@ import Profile from '../src/components/Profile/Profile';
 import Shop from '../src/components/Shop/Shop.js';
 
 
+
+
+
 class App extends Component {
   render() {
     return (
       <HashRouter>
         <div className="App">
-
+          
           <MatAppBar/>
-
+          
           <Route path='/about' component={ About } />
           <Route path='/private' component={ Admin } />
           <Route path='/booking' component={ Booking } />

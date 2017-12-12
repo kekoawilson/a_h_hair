@@ -6,7 +6,6 @@ import Person from 'material-ui/svg-icons/social/person';
 // import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg';
 
 
-
 class MatAppBar extends Component {
     constructor( props ) {
         super( props )
@@ -61,7 +60,8 @@ class MatAppBar extends Component {
             // img='../../assets/logo.png'
             showMenuIconButton={ true } // Shows the hamburger menu on the left of the title
             iconElementRight={ rightButtons }
-            onLeftIconButtonClick={ this.openDrawer }
+            onLeftIconButtonClick={ this.openDrawer } 
+            
             />
             </div>
         )

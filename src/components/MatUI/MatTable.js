@@ -5,10 +5,6 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 
 
 class MatTable extends Component {
-    constructor( props ) {
-        super( props )
-        
-    }
     
     componentDidMount() {
         this.props.getAllServices()

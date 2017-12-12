@@ -19,7 +19,7 @@ class TimeSelector extends Component {
           onChange={this.handleChange}
 
         >
-          <MenuItem value={null} primaryText="Morning or Afternoon?" />
+          <MenuItem value={ null } primaryText="Morning or Afternoon?" disabled={ true }/>
           <MenuItem value={1} primaryText="Morning" />
           <MenuItem value={2} primaryText="Afternoon" />
         </SelectField>
@@ -30,7 +30,7 @@ class TimeSelector extends Component {
           onChange={this.handleChange2}
           
         >
-          <MenuItem value={null} primaryText="Pick a Time" />
+          <MenuItem value={ null } primaryText="Pick a Time" disabled={ true }/>
           <MenuItem value={1} primaryText="1:00-1:30" />
           <MenuItem value={2} primaryText="2:00-2:30" />
           <MenuItem value={3} primaryText="3:00-3:30" />

@@ -24,7 +24,7 @@ class MatGridList extends Component {
       },
       gridList: {
         display: 'flex',
-        flexWrap: 'nowrap',
+        flexWrap: 'wrap',
         overflowX: 'auto',
       },
       titleStyle: {
@@ -51,6 +51,7 @@ class MatGridList extends Component {
           titleStyle={ styles.titleStyle }
           titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
           rows={ 1 }
+          cols={ 1.1 }
           >
           <img src={ tile.product_img } alt='store product' />
           </GridTile>

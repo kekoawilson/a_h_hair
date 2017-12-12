@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Step, Stepper, StepLabel, RaisedButton, FlatButton, DatePicker } from 'material-ui';
+import { Step, Stepper, StepLabel, RaisedButton, FlatButton, DatePicker, Snackbar } from 'material-ui';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 // import TextField from 'material-ui/TextField';
 import MatTable from '../MatUI/MatTable'
@@ -13,6 +13,9 @@ class MatStepper extends Component {
     loading: false,
     finished: false,
     stepIndex: 0,
+    open: false,
+    autoHideDuration: 4000,
+    message: 'Appointment has been booked.'
   };
 
   dummyAsync = (cb) => {
@@ -31,6 +34,29 @@ class MatStepper extends Component {
       }));
     }
   };
+
+  handleClick = () => {
+    const { stepIndex } = this.state
+    this.setState({
+      open: true,
+      stepIndex: stepIndex,
+      finished: true,
+      stepIndex: stepIndex + 1
+    });
+  };
+
+  handleActionClick = () => {
+    this.setState( {
+      open: false
+    })
+    alert('Appointment canceled.')
+  }
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    })
+  }
 
   handlePrev = () => {
     const {stepIndex} = this.state;
@@ -62,6 +88,7 @@ class MatStepper extends Component {
         return (
           <MatInput/>
         );
+  
       default:
         return 'You\'re a long way from home sonny jim!';
     }
@@ -102,8 +129,16 @@ class MatStepper extends Component {
           <RaisedButton
             label={stepIndex === 2 ? 'Book It!' : 'Next'}
             primary={true}
-            onClick={this.handleNext}
+            onClick={stepIndex === 2 ? this.handleClick : this.handleNext }
           />
+          <Snackbar
+          open={this.state.open}
+          message={this.state.message}
+          action='cancel'
+          autoHideDuration={this.state.autoHideDuration}
+          onActionClick={this.handleActionClick}
+          onRequestClose={this.handleRequestClose}
+        />
         </div>
       </div>
     );
@@ -111,7 +146,7 @@ class MatStepper extends Component {
 
   render() {
     const {loading, stepIndex} = this.state;
-
+    console.log(this.state);
     return (
       <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
         <Stepper 
