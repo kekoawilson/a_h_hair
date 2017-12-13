@@ -5,18 +5,36 @@ import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import MatTable from '../MatUI/MatTable'
 import TimeSelector from '../MatUI/MatTimeSelector'
 import MatInput from '../MatUI/MatInput'
+import { connect } from 'react-redux'
+import { getAllServices } from '../../ducks/reducer'
 
 
 class MatStepper extends Component {
+  constructor() {
+    super()
 
-  state = {
-    loading: false,
-    finished: false,
-    stepIndex: 0,
-    open: false,
-    autoHideDuration: 4000,
-    message: 'Appointment has been booked.'
-  };
+    this.state = {
+      loading: false,
+      finished: false,
+      stepIndex: 0,
+      open: false,
+      autoHideDuration: 4000,
+      message: 'Appointment has been booked.',
+      value: '',
+      time: '',
+      date: '',
+      servicesChosen: []
+  
+    };
+    this.handleChange = this.handleChange.bind( this )
+    this.handleChange2 = this.handleChange2.bind( this )
+    this.selectRow = this.selectRow.bind( this )
+  }
+
+  componentDidMount() {
+    this.props.getAllServices()
+  }
+
 
   dummyAsync = (cb) => {
     this.setState({loading: true}, () => {
@@ -41,7 +59,7 @@ class MatStepper extends Component {
       open: true,
       stepIndex: stepIndex,
       finished: true,
-      stepIndex: stepIndex + 1
+      // stepIndex: stepIndex + 1
     });
   };
 
@@ -68,11 +86,29 @@ class MatStepper extends Component {
     }
   };
 
+  handleChange = ( event, index, value ) => this.setState( { value } );
+  handleChange2 = ( event, index, time ) => this.setState( { time } );
+  
+  selectRow( rows ) {
+    console.log('parent', rows);
+    let selected = []
+    rows.map( ( position, i ) => {
+      return selected.push( this.props.servicesList[ position ] )
+    } )
+
+    this.setState( {
+      servicesChosen: selected
+    })
+    console.log( 'selected', selected );
+
+  }
+
   getStepContent( stepIndex ) {
     switch ( stepIndex ) {
       case 0:
         return (
-          <MatTable/>
+          <MatTable
+          selectRow={ this.selectRow }/>
         );
       case 1:
         return (
@@ -80,13 +116,21 @@ class MatStepper extends Component {
             <DatePicker
             hintText='Click Here'
             />
-            <TimeSelector/>
+            <TimeSelector 
+            value={ this.state.value }
+            time={ this.state.time }
+            handleChange={ this.handleChange }
+            handleChange2={ this.handleChange2 }/>
             
           </div>
         );
       case 2:
         return (
-          <MatInput/>
+          <MatInput servicesChosen={ this.state.servicesChosen }
+          date={ this.state.date }
+          time={ this.state.time }
+          value={ this.state.value }
+          />
         );
   
       default:
@@ -170,4 +214,14 @@ class MatStepper extends Component {
   }
 }
 
-export default MatStepper;
+let outputActions = {
+  getAllServices
+}
+
+function mapStateToProps( state ) {
+  return {
+    servicesList: state.servicesList
+  }
+}
+
+export default connect( mapStateToProps, outputActions )( MatStepper );

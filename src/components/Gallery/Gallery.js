@@ -6,7 +6,7 @@ import { getAllPhotos } from '../../ducks/reducer'
 const Tile = ( { src } ) => {
     return (
       <div className='tile'>
-      <img src={ src } />
+      <img src={ src } alt='hair'/>
       </div>
     )
   }
@@ -26,7 +26,7 @@ class Gallery extends Component {
     render() {
         const mason = this.props.photos.map( ( pic, id ) => {
           return (
-            <Tile src={ pic.photo_url } key={ id }/>
+            <Tile src={ pic.photo_url } key={ id } alt='hair' />
           ) 
         } ) 
         return (

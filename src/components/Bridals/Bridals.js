@@ -13,7 +13,7 @@ class Bridals extends Component {
       const displayBridals = this.props.photos.map( ( e, i ) => {
         return (
           <div key={ i }>
-          <img src={ e.photo_url }/>
+          <img src={ e.photo_url } alt='bridals'/>
           </div>
         )
       } )

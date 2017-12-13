@@ -5,33 +5,33 @@ import { getAllPhotos } from '../../ducks/reducer';
 import '../Dashboard/Dashboard.css';
 import Masonry from '../Masonry/Masonry'
 
-const Tile = ( { src } ) => {
+const Tile = ({ src }) => {
   return (
     <div className='tile'>
-    <img src={ src } />
+      <img src={src} alt='hair' />
     </div>
   )
 }
 
 class Dashboard extends Component {
-  constructor( props ) {
-    super( props )
+  constructor(props) {
+    super(props)
     this.state = {
       brakePoints: [350, 500, 750],
-      imgId: [ 29, 31, 34, 38, 49, 59, 66, 72, 80, 91, 103, 1]
+      imgId: [29, 31, 34, 38, 49, 59, 66, 72, 80, 91, 103]
     }
   }
 
   componentDidMount() {
-    this.props.getAllPhotos( 'photos' );
-  //   let brakePoints = [350, 500, 750];
-  //   for(let i = 0; i < imgId.length; i++){
-  //     const ih = 200 + Math.floor(Math.random()*10)*15;
-  //     images.push("https://unsplash.it/250/" + ih + "?image=" + imgId[i]);
-  //   }
-  //   this.setState( {
-  //     images
-  //   } )
+    this.props.getAllPhotos('photos');
+    //   let brakePoints = [350, 500, 750];
+    //   for(let i = 0; i < imgId.length; i++){
+    //     const ih = 200 + Math.floor(Math.random()*10)*15;
+    //     images.push("https://unsplash.it/250/" + ih + "?image=" + imgId[i]);
+    //   }
+    //   this.setState( {
+    //     images
+    //   } )
 
 
   }
@@ -48,28 +48,45 @@ class Dashboard extends Component {
     //     <Tile src={ pic.photo_url } key={ id }/>
     //   ) 
     // } ) 
-    const showIt = this.props.photos.filter( ( e, id ) => this.state.imgId.indexOf( id ) !== -1).map( ( pic, id ) => {
-        return (
-          <Tile src={ pic.photo_url } key={ id }/>
-        ) 
-      } ) 
-    
-    
+    const showIt = this.props.photos.filter( ( e, id ) => this.state.imgId.indexOf( id ) !== -1 )
+    .map( ( pic, id ) => {
+      return (
+        <Tile src={pic.photo_url} key={id} />
+      )
+    })
+
+
 
     return (
       <div className="Dashboard">
-      <div className='masonry-container'>
-      <Masonry brakePoints={ this.state.brakePoints }>
-      { showIt }
-      </Masonry>
-    </div>
+        <div className='masonry-container'>
+          <Masonry brakePoints={this.state.brakePoints}>
+            {showIt}
+          </Masonry>
+          </div>
+          <div className='footer'>
+            <div className='contact'>
+              <h2> Addee Hunt Hair</h2>
+              <p> Herriman, UT</p>
+              <p> Tel:</p>
+              <p> Hours: MTThF 8am - 5pm,</p>
+              <p>W 10am-8pm,</p>
+              <p>Sat 8am - 12pm </p>
+            </div>
+            <div className='appt'>
+              <p>Call, Text, or book appointments online!</p>
+            </div>
+            <div className='social'>
+              <a>links to social media</a>
+            </div>
+          </div>
 
 
-    
-    
-    </div>
-  );
-}
+
+
+      </div>
+    );
+  }
 }
 // <div className='box-3'>{ displayPhoto[31] }</div>
 // <div className='box-2'>{ displayPhoto[29] }</div>
@@ -88,8 +105,8 @@ let outputActions = {
   getAllPhotos
 }
 
-function mapStateToProps( state ) {
+function mapStateToProps(state) {
   return { photos: state.photos }
 }
 
-export default connect( mapStateToProps, outputActions )( Dashboard );
+export default connect(mapStateToProps, outputActions)(Dashboard);
