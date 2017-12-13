@@ -10,13 +10,13 @@ class TimeSelector extends Component {
       <div>
         <SelectField
           floatingLabelText="Morning or Afternoon?"
-          value={ this.props.value }
+          value={ this.props.meridies }
           onChange={ this.props.handleChange }
 
         >
-          <MenuItem value={ null } primaryText="Morning or Afternoon?" disabled={ true }/>
-          <MenuItem value={ 1 } primaryText="Morning" />
-          <MenuItem value={ 2 } primaryText="Afternoon" />
+          <MenuItem value={ null } primaryText='Morning or Afternoon?' disabled={ true }/>
+          <MenuItem value={ 'Morning' } primaryText='Morning' />
+          <MenuItem value={ 'Afternoon' } primaryText='Afternoon' />
         </SelectField>
 
         <SelectField

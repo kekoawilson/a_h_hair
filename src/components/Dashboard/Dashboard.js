@@ -5,20 +5,20 @@ import { getAllPhotos } from '../../ducks/reducer';
 import '../Dashboard/Dashboard.css';
 import Masonry from '../Masonry/Masonry'
 
-const Tile = ({ src }) => {
+const Tile = ( { src } ) => {
   return (
     <div className='tile'>
-      <img src={src} alt='hair' />
+      <img src={ src } alt='hair' />
     </div>
   )
 }
 
 class Dashboard extends Component {
-  constructor(props) {
-    super(props)
+  constructor( props ) {
+    super( props )
     this.state = {
-      brakePoints: [350, 500, 750],
-      imgId: [29, 31, 34, 38, 49, 59, 66, 72, 80, 91, 103]
+      brakePoints: [ 350, 500, 750 ],
+      imgId: [ 29, 31, 34, 38, 49, 59, 66, 72, 80, 91, 103, 100 ]
     }
   }
 
@@ -48,10 +48,10 @@ class Dashboard extends Component {
     //     <Tile src={ pic.photo_url } key={ id }/>
     //   ) 
     // } ) 
-    const showIt = this.props.photos.filter( ( e, id ) => this.state.imgId.indexOf( id ) !== -1 )
+    const showIt = this.props.photos.filter( ( tile, id ) => this.state.imgId.indexOf( id ) !== -1 )
     .map( ( pic, id ) => {
       return (
-        <Tile src={pic.photo_url} key={id} />
+        <Tile className={`img-${ id }`} src={ pic.photo_url } key={ id } />
       )
     })
 
@@ -60,8 +60,8 @@ class Dashboard extends Component {
     return (
       <div className="Dashboard">
         <div className='masonry-container'>
-          <Masonry brakePoints={this.state.brakePoints}>
-            {showIt}
+          <Masonry brakePoints={ this.state.brakePoints }>
+            { showIt }
           </Masonry>
           </div>
           <div className='footer'>
@@ -105,8 +105,8 @@ let outputActions = {
   getAllPhotos
 }
 
-function mapStateToProps(state) {
+function mapStateToProps( state ) {
   return { photos: state.photos }
 }
 
-export default connect(mapStateToProps, outputActions)(Dashboard);
+export default connect( mapStateToProps, outputActions )( Dashboard );

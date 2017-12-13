@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Step, Stepper, StepLabel, RaisedButton, FlatButton, DatePicker, Snackbar } from 'material-ui';
+import { Step, Stepper, StepLabel, RaisedButton, FlatButton, Snackbar } from 'material-ui';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 // import TextField from 'material-ui/TextField';
 import MatTable from '../MatUI/MatTable'
@@ -7,6 +7,8 @@ import TimeSelector from '../MatUI/MatTimeSelector'
 import MatInput from '../MatUI/MatInput'
 import { connect } from 'react-redux'
 import { getAllServices } from '../../ducks/reducer'
+import MatDatePicker from '../MatUI/MatDatePicker'
+
 
 
 class MatStepper extends Component {
@@ -20,15 +22,16 @@ class MatStepper extends Component {
       open: false,
       autoHideDuration: 4000,
       message: 'Appointment has been booked.',
-      value: '',
+      meridies: '',
       time: '',
-      date: '',
+      date: null,
       servicesChosen: []
   
     };
     this.handleChange = this.handleChange.bind( this )
     this.handleChange2 = this.handleChange2.bind( this )
     this.selectRow = this.selectRow.bind( this )
+    this.dateChange = this.dateChange.bind( this )
   }
 
   componentDidMount() {
@@ -86,9 +89,15 @@ class MatStepper extends Component {
     }
   };
 
-  handleChange = ( event, index, value ) => this.setState( { value } );
+  handleChange = ( event, index, meridies ) => this.setState( { meridies } );
   handleChange2 = ( event, index, time ) => this.setState( { time } );
   
+  dateChange( e, date ) {
+    this.setState( {
+      date
+    } )
+  }
+
   selectRow( rows ) {
     console.log('parent', rows);
     let selected = []
@@ -113,11 +122,13 @@ class MatStepper extends Component {
       case 1:
         return (
           <div>
-            <DatePicker
+            <MatDatePicker
+            dateChange={ this.dateChange }
+            date={ this.state.date }
             hintText='Click Here'
             />
             <TimeSelector 
-            value={ this.state.value }
+            meridies={ this.state.meridies }
             time={ this.state.time }
             handleChange={ this.handleChange }
             handleChange2={ this.handleChange2 }/>
@@ -129,7 +140,7 @@ class MatStepper extends Component {
           <MatInput servicesChosen={ this.state.servicesChosen }
           date={ this.state.date }
           time={ this.state.time }
-          value={ this.state.value }
+          value={ this.state.value }          
           />
         );
   
@@ -150,7 +161,7 @@ class MatStepper extends Component {
             //   href="#"
               onClick={(event) => {
                 event.preventDefault();
-                this.setState({stepIndex: 0, finished: false});
+                this.setState( {stepIndex: 0, finished: false, meridies: '', time: '', date: '', servicesChosen: [] } );
               }}
             >
               Reset

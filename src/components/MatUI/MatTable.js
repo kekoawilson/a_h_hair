@@ -30,10 +30,14 @@ class MatTable extends Component {
             <TableBody 
             stripedRows={ true }
             deselectOnClickaway={ false }
+            showRowHover={ true }
             >
             { this.props.servicesList.map( ( row, i ) => {
                 return ( 
-                    <TableRow key={ i } >
+                    <TableRow 
+                    key={ i } 
+                    hoverable={ true }
+                    >
                     <TableRowColumn>{ row.services }</TableRowColumn>
                     <TableRowColumn>{ row.price }</TableRowColumn>
                 </TableRow>

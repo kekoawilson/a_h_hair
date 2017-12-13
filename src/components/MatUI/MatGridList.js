@@ -7,9 +7,6 @@ import Delete from 'material-ui/svg-icons/action/delete';
 
 
 class MatGridList extends Component {
-  constructor(props) {
-    super(props)
-  }
   
   componentDidMount() {
     this.props.getAllProducts() 
