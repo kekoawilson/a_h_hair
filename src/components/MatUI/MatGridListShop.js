@@ -6,7 +6,7 @@ import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
 import Delete from 'material-ui/svg-icons/action/delete';
 
 
-class MatGridList extends Component {
+class MatGridListShop extends Component {
   
   componentDidMount() {
     this.props.getAllProducts() 
@@ -68,7 +68,6 @@ let outputActions = {
 }
 
 function mapStateToProps( state ) {
-  console.log( state );
   return { 
     shoppingCart: state.shoppingCart,
     products: state.products
@@ -76,7 +75,7 @@ function mapStateToProps( state ) {
 }
 
 
-export default connect( mapStateToProps, outputActions )( MatGridList );
+export default connect( mapStateToProps, outputActions )( MatGridListShop );
 
 
 // const tilesData = [

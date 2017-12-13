@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AppBar, Drawer, MenuItem, IconButton, Avatar } from 'material-ui';
 import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart';
 import Person from 'material-ui/svg-icons/social/person';
-// import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg';
+import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg';
 
 
 class MatAppBar extends Component {
@@ -59,6 +59,8 @@ class MatAppBar extends Component {
             </Drawer>
             <AppBar
             // img='../../assets/logo.png'
+            // title={ logo }
+            
             showMenuIconButton={ true } // Shows the hamburger menu on the left of the title
             iconElementRight={ rightButtons }
             onLeftIconButtonClick={ this.openDrawer } 

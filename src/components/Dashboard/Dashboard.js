@@ -3,7 +3,12 @@ import 'reset-css';
 import { connect } from 'react-redux';
 import { getAllPhotos } from '../../ducks/reducer';
 import '../Dashboard/Dashboard.css';
-import Masonry from '../Masonry/Masonry'
+// import Masonry from '../Masonry/Masonry'
+import MatGridListDash from '../MatUI/MatGridListDash'
+// import model from '../../assets/ig-photos/18011421_1840155656248312_6837133665131036672_n.jpg'
+import fb from '../../assets/001-facebook-logo-button.svg'
+import ig from '../../assets/002-instagram-logo.svg'
+import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg'
 
 const Tile = ( { src } ) => {
   return (
@@ -18,23 +23,10 @@ class Dashboard extends Component {
     super( props )
     this.state = {
       brakePoints: [ 350, 500, 750 ],
-      imgId: [ 29, 31, 34, 38, 49, 59, 66, 72, 80, 91, 103, 100 ]
+      // imgId: [ 29, 31, 34, 38, 49, 59, 66, 72, 80, 91, 103, 100 ]
     }
   }
 
-  componentDidMount() {
-    this.props.getAllPhotos('photos');
-    //   let brakePoints = [350, 500, 750];
-    //   for(let i = 0; i < imgId.length; i++){
-    //     const ih = 200 + Math.floor(Math.random()*10)*15;
-    //     images.push("https://unsplash.it/250/" + ih + "?image=" + imgId[i]);
-    //   }
-    //   this.setState( {
-    //     images
-    //   } )
-
-
-  }
 
   render() {
     // const displayPhoto = this.props.photos.map( ( e, i ) => { 
@@ -48,36 +40,44 @@ class Dashboard extends Component {
     //     <Tile src={ pic.photo_url } key={ id }/>
     //   ) 
     // } ) 
-    const showIt = this.props.photos.filter( ( tile, id ) => this.state.imgId.indexOf( id ) !== -1 )
-    .map( ( pic, id ) => {
-      return (
-        <Tile className={`img-${ id }`} src={ pic.photo_url } key={ id } />
-      )
-    })
+    // const showIt = this.props.photos.filter( ( tile, id ) => this.state.imgId.indexOf( id ) !== -1 )
+    // .map( ( pic, id ) => {
+    //   return (
+    //     <Tile className={`img-${ id }`} src={ pic.photo_url } key={ id } />
+    //   )
+    // })
 
 
 
     return (
       <div className="Dashboard">
-        <div className='masonry-container'>
+        { /*<div className='masonry-container'>
           <Masonry brakePoints={ this.state.brakePoints }>
             { showIt }
           </Masonry>
+    </div> */}
+          <div className='parallax-photo'>
+            <div> 
+            <img className='logo' src={ logo }/>
+            </div>
           </div>
+          <div className='top-section'>
+            <h2>Your Dream haircut</h2>
+            
+
+          
+          </div>
+          <MatGridListDash/>
+          <div className='middle-section'>
+          
+          </div>
+
           <div className='footer'>
-            <div className='contact'>
-              <h2> Addee Hunt Hair</h2>
-              <p> Herriman, UT</p>
-              <p> Tel:</p>
-              <p> Hours: MTThF 8am - 5pm,</p>
-              <p>W 10am-8pm,</p>
-              <p>Sat 8am - 12pm </p>
+            <div className='fb'>
+            <a href='https://www.facebook.com/Addee-Hunt-Hair-758418760980428/'><i class="fa fa-facebook" aria-hidden="true"></i></a>
             </div>
-            <div className='appt'>
-              <p>Call, Text, or book appointments online!</p>
-            </div>
-            <div className='social'>
-              <a>links to social media</a>
+            <div className='ig'>
+            <a href='https://www.instagram.com/addeehunthair/'><i className="fa fa-instagram" aria-hidden="true"></i></a>
             </div>
           </div>
 

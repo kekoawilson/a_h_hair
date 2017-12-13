@@ -1,0 +1,44 @@
+.contact {
+    font-size: 16px;
+    /* margin-right: 5px; */
+    height: inherit;
+    width: 40vw;
+    line-height: 21px;
+    border: solid black 1px;
+}
+
+
+.appt {
+    height: inherit;
+    width: 40vw;
+    font-size: 17px;
+    letter-spacing: 1px;
+    line-height: 27px;
+    border: solid black 1px;
+    
+}
+
+.afooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    height: 25vh;
+    width: 100vw;
+    border: solid black 1px;
+    text-align: center;
+    background-color: white;
+}
+
+.social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: 18vw;
+    border: black solid 1px;
+    /* a: {
+
+    } */
+}

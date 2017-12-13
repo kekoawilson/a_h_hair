@@ -15,8 +15,6 @@ import Shop from '../src/components/Shop/Shop.js';
 
 
 
-
-
 class App extends Component {
   render() {
     return (

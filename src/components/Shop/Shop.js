@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import axios from 'axios';
 import { connect } from 'react-redux';
 // import { getAllProducts } from '../../ducks/reducer';
-import MatGridList from '../MatUI/MatGridList';
+import MatGridListShop from '../MatUI/MatGridListShop';
 
 
 class Shop extends Component {
@@ -25,7 +25,7 @@ class Shop extends Component {
           <div className="Shop">
             <h2>Welcome to the Shop</h2>
             {/* displayProducts */}
-             <MatGridList/>
+             <MatGridListShop/>
             
           </div>
       );

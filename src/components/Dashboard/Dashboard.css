@@ -2,15 +2,15 @@
     display: flex;
 } */
 
-.masonry-container {
+/* .masonry-container {
     width: 80%;
     margin: auto;
     margin-top: 10px;
     border: 1px solid rgba( 0, 0, 0, .1);
 
-}
+} */
 
-.tile {
+/* .tile {
     margin: 4px;
 }
 
@@ -19,21 +19,80 @@
     border-radius: 10px;
     height: 44vh;
     width: 100%;
+} */
+
+.parallax-photo {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://static1.squarespace.com/static/55e49451e4b0fbac6883f7a3/t/55e5dfbfe4b065e3bc87a29d/1441128386052/thewoodsweb4.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
 }
+
+.comb {
+    height: 100vh;
+    width: 120vw;
+}
+
+.top-section {
+    height: 40vh;
+    border: 1px solid black;
+    width: auto;
+    text-align: center;
+}
+
+.hair-salon {
+    height: 10vh;
+    width: auto;
+}
+
+.middle-section {
+    height: 22vh;
+    border: 1px solid black;
+    width: auto;
+    text-align: center;
+}
+
+.logo {
+    height: 20vh;
+}
+
 
 
 .footer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 0 5px;
-    height: 20vh;
-    width: 96vw;
+    justify-content: center;
+    margin: 0;
+    height: 25vh;
+    width: 100vw;
     border: solid black 1px;
-
 }
 
-.contact {
-    font-size: 16px;
-    margin-right: 5px;
+.fb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: 18vw;
+    border: black solid 1px;
+    /* a: {
+
+    } */
+}
+
+.ig {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: 18vw;
+    border: black solid 1px;
+    /* a: {
+
+    } */
 }
