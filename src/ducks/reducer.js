@@ -25,6 +25,7 @@ const GET_ALL_SERVICES_FULFILLED = 'GET_ALL_SERVICES_FULFILLED'
 const GET_ALL_PHOTOS = 'GET_ALL_PHOTOS'
 const GET_ALL_PHOTOS_PENDING = 'GET_ALL_PHOTOS_PENDING'
 const GET_ALL_PHOTOS_FULFILLED = 'GET_ALL_PHOTOS_FULFILLED'
+const GET_APPTS = 'GET_APPTS'
 
 // Action Creators
 
@@ -80,6 +81,14 @@ export function getAllPhotos( photoType ) {
     }
 }
 
+export function getAppts( appt ) {
+    let apptInfo = axios.get( '/api/send' ).then( res => res.data )
+    return {
+        type: GET_APPTS,
+        payload: apptInfo
+    }
+}
+
 // Reducer
 
 export default function reducer( state = initialState, action ) {
@@ -119,7 +128,8 @@ export default function reducer( state = initialState, action ) {
 
         case GET_ALL_PHOTOS + '_FULFILLED':
             return Object.assign( {}, state, { loading: false, photos: action.payload } )
-
+            
+        
         default:
             return state;
     }

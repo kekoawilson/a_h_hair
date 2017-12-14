@@ -13,7 +13,7 @@ class Cart extends Component {
         <div key={ i } >
         
           <p>{ e.product_name }</p>
-          <img src={ e.product_img }/>
+          <img className='cart-img' src={ e.product_img }/>
        
         </div>
       )

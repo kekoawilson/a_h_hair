@@ -34,7 +34,7 @@ const muiTheme = getMuiTheme({
     },
     "appBar": {
         color: white,
-        "height": 70,
+        "height": 70,      
         
     },
     "tableRow": {

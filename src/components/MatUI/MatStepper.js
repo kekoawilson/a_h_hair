@@ -8,6 +8,7 @@ import MatInput from '../MatUI/MatInput'
 import { connect } from 'react-redux'
 import { getAllServices } from '../../ducks/reducer'
 import MatDatePicker from '../MatUI/MatDatePicker'
+import axios from 'axios'
 
 
 
@@ -32,6 +33,7 @@ class MatStepper extends Component {
     this.handleChange2 = this.handleChange2.bind( this )
     this.selectRow = this.selectRow.bind( this )
     this.dateChange = this.dateChange.bind( this )
+    this.addAppt = this.addAppt.bind( this )
   }
 
   componentDidMount() {
@@ -58,6 +60,7 @@ class MatStepper extends Component {
 
   handleClick = () => {
     const { stepIndex } = this.state
+    this.addAppt()
     this.setState({
       open: true,
       stepIndex: stepIndex,
@@ -110,6 +113,21 @@ class MatStepper extends Component {
     })
     console.log( 'selected', selected );
 
+  }
+
+  addAppt() {
+    let appt = { 
+      date: this.state.date,
+      time: this.state.time,
+      service: this.state.servicesChosen
+    }
+
+    axios.post( '/api/addAppt', appt ).then( res => {
+      console.log('res', res.data )
+      axios.post( '/api/send', res.data ).then( response => {
+        console.log('response', response.data);
+      })
+    })
   }
 
   getStepContent( stepIndex ) {

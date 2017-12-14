@@ -7,6 +7,7 @@ const express = require('express')
     , Auth0Strategy = require('passport-auth0')
     , massive = require('massive')
     , controller = require('../server/controllers/controller')
+    , nodemailer = require('nodemailer')
 
 const app = express()
 app.use( bodyParser.json() )
@@ -21,10 +22,7 @@ massive( process.env.DB_CONNECTION ).then( db => app.set( 'db', db ) )
 app.use( session( {
     secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
-    resave: false,
-    cookie: {
-        maxAge: 5400
-    }
+    resave: false
 }))
 //app.use( express.static( __dirname + '/../build' ) )
 app.use( passport.initialize() )
@@ -53,6 +51,9 @@ passport.use( new Auth0Strategy( {
 
 } ) )
 
+
+
+
 // Endpoints -------------------
 
 // Auth
@@ -60,21 +61,52 @@ app.get( '/auth', passport.authenticate( 'auth0' ) )
 app.get( '/auth/callback', passport.authenticate( 'auth0', {
     successRedirect: 'http://localhost:3000/#/private',
     failureRedirect: 'http://localhost:3000/#/'
-    } ) )
+} ) )
 
 passport.serializeUser( ( ID, done ) => done( null, ID ) ) // saves user id to session
 
 passport.deserializeUser( ( ID, done ) => {
     const db = app.get( 'db' )
     db.find_user_session( [ID] )
-        .then( user => {
-            done( null, user[0] )
-        } )
+    .then( user => {
+        console.log('user', user);
+        done( null, user[0] )
+    } )
 } )
 
 app.get( '/auth/verify', controller.verify ) // used for auth and also to get updated info for profile view
 
 app.get( '/auth/logout', controller.logout )
+
+// NodeMailer
+
+let db = app.get( 'db' )
+app.post( '/api/send' , ( req, res ) => {
+    let transporter = nodemailer.createTransport( {
+        service: 'gmail',
+        auth: {
+            user: process.env.NODEMAILER_USER,
+            pass: process.env.NODEMAILER_PASS
+        }
+    })
+    console.log('req.body', req.body);
+    
+    const mailOptions = {
+        from: process.env.NODEMAILER_USER,
+        to: process.env.NODEMAILER_USER,
+        subject: 'Appointment Information',
+        html: `<p> Date: ${ req.body[0].appt_date } Time: ${ req.body[0].appt_time } Service: ${ req.body[0].appt_service } </p>`
+    }
+    
+    transporter.sendMail( mailOptions, ( err, info ) => {
+        if( err ) {
+            console.log( err );
+        } else {
+            console.log(info)
+            res.send('if you see this, it worked.')
+        }
+    })
+} )
 
 // User
 
@@ -95,6 +127,10 @@ app.get( '/api/photos', controller.getPhotos )
 // Bridals
 
 app.get( '/api/bridal', controller.getPhotos )
+
+// Appointments
+
+app.post( '/api/addAppt', controller.addAppt )
 
 
 // Test
