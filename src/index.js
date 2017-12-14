@@ -9,8 +9,8 @@ import store from '../src/store';
 //      fullBlack, cyan500, pinkA100, grey50, grey600, grey100, grey400,
 //      blue500, blue300 } from 'material-ui/styles/colors';
 import { MuiThemeProvider, getMuiTheme, spacing } from 'material-ui/styles';
-import { transparent, white, black } from 'material-ui/styles/colors';
-import { fade } from 'material-ui/utils/colorManipulator';
+import { white, black } from 'material-ui/styles/colors';
+// import { fade } from 'material-ui/utils/colorManipulator';
 
 
 const muiTheme = getMuiTheme({

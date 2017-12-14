@@ -1,4 +1,37 @@
-.contact {
+.About {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.top-section {
+    border: dashed orchid 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90vh;
+}
+
+.about-me {
+    border: greenyellow 1px solid;
+    height: 40vh;
+    width: 60vw;
+    align-self: flex-start;
+}
+
+.addee {
+    height: 40vh;
+    width: 70vw;
+    align-self: flex-end;
+}
+
+.middle-section {
+    height: 80vh;
+    width: auto;
+    border: black 1 solid;
+}
+
+.contact-info {
     font-size: 16px;
     /* margin-right: 5px; */
     height: inherit;
@@ -8,7 +41,7 @@
 }
 
 
-.appt {
+.appt-box {
     height: inherit;
     width: 40vw;
     font-size: 17px;
@@ -18,27 +51,7 @@
     
 }
 
-.afooter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0;
-    height: 25vh;
-    width: 100vw;
-    border: solid black 1px;
-    text-align: center;
-    background-color: white;
-}
-
-.social {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-    width: 18vw;
-    border: black solid 1px;
-    /* a: {
-
-    } */
+.bottom-section {
+    height: 60vh;
+    width: auto;
 }

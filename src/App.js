@@ -12,6 +12,7 @@ import Gallery from '../src/components/Gallery/Gallery.js';
 import MatAppBar from '../src/components/MatUI/MatAppBar';
 import Profile from '../src/components/Profile/Profile';
 import Shop from '../src/components/Shop/Shop.js';
+import Footer from '../src/components/Footer/Footer';
 
 
 
@@ -32,7 +33,10 @@ class App extends Component {
           <Route path='/gallery' component={ Gallery } />
           <Route path='/profile' component={ Profile } />
           <Route path='/shop' component={ Shop } />
+
+          <Footer/>
           
+
 
         </div>
       </HashRouter>

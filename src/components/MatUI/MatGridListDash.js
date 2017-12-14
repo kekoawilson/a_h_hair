@@ -1,4 +1,4 @@
-import { GridList, GridTile, IconButton } from 'material-ui';
+import { GridList, GridTile } from 'material-ui';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllPhotos } from '../../ducks/reducer';
