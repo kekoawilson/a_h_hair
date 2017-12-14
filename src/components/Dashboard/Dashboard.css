@@ -24,19 +24,22 @@
 .parallax-photo {
     height: 100vh;
     width: 100vw;
-    background-image: url("https://static1.squarespace.com/static/55e49451e4b0fbac6883f7a3/t/55e5dfbfe4b065e3bc87a29d/1441128386052/thewoodsweb4.jpg");
+    background-image: url("https://static1.squarespace.com/static/54fef3cee4b0a7a5db2fb2c2/t/59824bb2bebafb576aeb2bc2/1501711299203/");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
+    
 }
+
+https://static1.squarespace.com/static/55e49451e4b0fbac6883f7a3/t/55e5dfbfe4b065e3bc87a29d/1441128386052/thewoodsweb4.jpg
 
 .comb {
     height: 100vh;
     width: 120vw;
 }
 
-.top-section {
+.top-section-dash {
     height: 40vh;
     border: 1px solid black;
     width: auto;
@@ -48,7 +51,7 @@
     width: auto;
 }
 
-.middle-section {
+.middle-section-dash {
     height: 22vh;
     border: 1px solid black;
     width: auto;
@@ -62,9 +65,14 @@
 
 .google-maps {
     text-align: center;
-    height: 20vh;
+    height: 53vh;
     width: auto;
     border: black solid 1px;
 }
 
 
+iframe {
+    height: 53vh;
+    width: 100vw;
+    
+}

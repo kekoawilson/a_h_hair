@@ -9,7 +9,8 @@
 
 .column {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-content: stretch;
     flex-grow: 1;

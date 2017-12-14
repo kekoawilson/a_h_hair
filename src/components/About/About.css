@@ -4,7 +4,7 @@
 
 }
 
-.top-section {
+.about-top-section {
     border: dashed orchid 1px;
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
     align-self: flex-end;
 }
 
-.middle-section {
+.about-middle-section {
     height: 80vh;
     width: auto;
     border: black 1 solid;
@@ -51,7 +51,7 @@
     
 }
 
-.bottom-section {
+.bottom-section-about {
     height: 60vh;
     width: auto;
 }

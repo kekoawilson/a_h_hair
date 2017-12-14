@@ -26,16 +26,15 @@ class App extends Component {
           
           <Route path='/about' component={ About } />
           <Route path='/private' component={ Admin } />
-          <Route path='/booking' component={ Booking } />
           <Route path='/bridals' component={ Bridals } />
           <Route path='/cart' component={ Cart } />
           <Route exact path='/' component={ Dashboard } />
           <Route path='/gallery' component={ Gallery } />
           <Route path='/profile' component={ Profile } />
           <Route path='/shop' component={ Shop } />
-
-          <Footer/>
+          <Route path='/booking' component={ Booking } />
           
+                    
 
 
         </div>

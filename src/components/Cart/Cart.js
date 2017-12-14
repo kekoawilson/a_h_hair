@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Footer from '../../components/Footer/Footer';
+
 
 
 class Cart extends Component {
   
   render() {
     const displayCart = this.props.shoppingCart.map( ( e, i ) => {
+      console.log('cart', this.props.shoppingCart);
       return (
         <div key={ i } >
-        <ul>
-          <li>{ e.product_name }</li>
-          <li>{ e.product_img }</li>
-        </ul>
+        
+          <p>{ e.product_name }</p>
+          <img src={ e.product_img }/>
+       
         </div>
       )
     })
@@ -19,7 +22,7 @@ class Cart extends Component {
           <div className="Cart">
             <h2>Viewing your cart! (its probably empty)</h2>
             { displayCart }
-            
+            <Footer/>
           </div>
       );
     }

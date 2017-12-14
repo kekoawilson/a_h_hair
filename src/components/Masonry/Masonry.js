@@ -53,7 +53,7 @@ class Masonry extends Component {
                 return (
                     <div className='column' key={ curIndex }>
                     { col.map( ( child, i ) => {
-                        return <div key={ i }>{ child }</div>
+                        return <div className='imhere' key={ i }>{ child }</div>
                     })}
                     </div>
                 )

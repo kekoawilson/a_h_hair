@@ -7,6 +7,8 @@ import '../Dashboard/Dashboard.css';
 import MatGridListDash from '../MatUI/MatGridListDash'
 // import model from '../../assets/ig-photos/18011421_1840155656248312_6837133665131036672_n.jpg'
 import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg'
+import Footer from '../../components/Footer/Footer';
+
 
 // const Tile = ( { src } ) => {
 //   return (
@@ -70,12 +72,13 @@ class Dashboard extends Component {
           <div className='middle-section'>
           <p>Aliquam eu nulla feugiat, laoreet nisl vel, vehicula turpis. Suspendisse eleifend lobortis sollicitudin. Sed leo sem, maximus id arcu sit amet, dapibus dapibus eros. Nulla metus metus, consequat ut felis sit amet, commodo luctus ipsum. Pellentesque porttitor efficitur lorem eu tincidunt. Donec turpis elit, bibendum ut tempor eu, tempor ac elit.</p>
           </div>
+          
           <div className='google-maps'>
-          <p>Google maps goes here</p>
+          <iframe title='Herriman' frameBorder="0"  src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJPdx1-X-DUocRHiAXdCHLPbI&key=AIzaSyAp6UxvZoXIkbENQW2kgjE0wLrmNPJqcgQ" allowFullScreen={ true }></iframe>          
           </div>
           
 
-
+        <Footer/>
 
 
       </div>

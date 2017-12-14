@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import 'reset-css'
 import '../About/About.css'
 import addee from'../../assets/ig-photos/18879253_225878457929064_2360960397537705984_n.jpg'
+import Footer from '../../components/Footer/Footer';
+
 
 class About extends Component {
   render() {
     return (
       <div className="About">
 
-        <section className='top-section'>
+        <section className='about-top-section'>
 
         <div className='about-me'>
 
@@ -19,7 +21,7 @@ class About extends Component {
 
         </section>
 
-        <section className='middle-section'>
+        <section className='about-middle-section'>
         
         <div className='appt-box'>
           <p>Call, Text, or book appointments online!</p>
@@ -41,8 +43,9 @@ class About extends Component {
         </section>
 
         <section className='bottom-section'>
-        <p>Google api again!</p>
-        </section>
+        <iframe title='Herriman' frameBorder="0"  src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJPdx1-X-DUocRHiAXdCHLPbI&key=AIzaSyAp6UxvZoXIkbENQW2kgjE0wLrmNPJqcgQ" allowFullScreen={ true }></iframe>        </section>
+
+        <Footer/>
       </div>
     );
   }
