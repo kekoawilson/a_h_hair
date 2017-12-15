@@ -24,7 +24,9 @@ class Shop extends Component {
       return (
           <div className="Shop">
             <h2>Welcome to the Shop</h2>
+
             {/* displayProducts */}
+            { this.props.rejected }
              <MatGridListShop/>
             
           </div>
@@ -38,7 +40,7 @@ class Shop extends Component {
 
   function mapStateToProps( state ) {
 
-    return { products: state.products }
+    return { products: state.products, rejected:state.rejected }
   }
 
   export default connect( mapStateToProps )( Shop );

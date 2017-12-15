@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import '../Cart/Cart.css';
 import Footer from '../../components/Footer/Footer';
+import { RaisedButton } from 'material-ui';
 
 
 
@@ -10,11 +12,11 @@ class Cart extends Component {
     const displayCart = this.props.shoppingCart.map( ( e, i ) => {
       console.log('cart', this.props.shoppingCart);
       return (
-        <div key={ i } >
+        <div className='cart-container' key={ i } >
         
           <p>{ e.product_name }</p>
           <img className='cart-img' src={ e.product_img }/>
-       
+          <RaisedButton label="Remove from cart"/>
         </div>
       )
     })

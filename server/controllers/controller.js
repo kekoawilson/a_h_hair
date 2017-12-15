@@ -4,9 +4,11 @@ module.exports = {
         let response = req.user,
             status = 200,
             db = req.app.get( 'db' )
-        
+        console.log('hit');
         if( !response ) {
           return res.status( 401 ).send( 'LOGIN REQUIRED' )
+        } else {
+            return next()
         }
         
         db.find_user_session( [response.id] ).then( user => res.send( user ) )
@@ -14,7 +16,7 @@ module.exports = {
 
     logout ( req, res, next ) {
         req.logout()
-        res.redirect( 'http://localhost:3000/#/' )
+        res.redirect( process.env.REACT_APP_LOGOUT )
     },
 
     updateUser ( req, res, next ) {
@@ -37,6 +39,7 @@ module.exports = {
 
     getProducts( req, res, next ) {
         let db = req.app.get( 'db' )
+        console.log('hit products');
 
         db.get_products( [req.body] ).then( products => res.send( products ) )
     },
@@ -81,11 +84,12 @@ module.exports = {
     },
 
     checkAdmin( req, res, next ) {
-        if ( req.user.type === 'admin' ) {
+        console.log('req.user', req.user);
+        if ( req.user && req.user.user_type === 'admin' ) {
             next()
         } else {
-            req.redirect( 'http://localhost:3000/#/' )
-        }
+            return res.status( 401 ).send( 'notAdmin' )
+            }
     }
 
 }

@@ -2,29 +2,26 @@ import axios from 'axios';
 
 const initialState = {
     userData: {},
+    users: [],
     products: [],
     shoppingCart: [],
     servicesList: [],
     photos: [],
     servicesChosen: '',
     day: '',
-    time: ''
+    time: '',
+    rejected: ''
 }
 
 // Action Types/ Constants
 
 const GET_USER = 'GET_USER';
+const GET_USERS = 'GET_USERS';
 const ADD_TO_SHOPPING_CART = 'ADD_TO_SHOPPING_CART'
 const REMOVE_FROM_SHOPPING_CART = 'REMOVE_FROM_SHOPPING_CART'
 const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
-const GET_ALL_PRODUCTS_PENDING = 'GET_ALL_PRODUCTS_PENDING'
-const GET_ALL_PRODUCTS_FULFILLED = 'GET_ALL_PRODUCTS_FULFILLED'
 const GET_ALL_SERVICES = 'GET_ALL_SERVICES'
-const GET_ALL_SERVICES_PENDING = 'GET_ALL_SERVICES_PENDING'
-const GET_ALL_SERVICES_FULFILLED = 'GET_ALL_SERVICES_FULFILLED'
 const GET_ALL_PHOTOS = 'GET_ALL_PHOTOS'
-const GET_ALL_PHOTOS_PENDING = 'GET_ALL_PHOTOS_PENDING'
-const GET_ALL_PHOTOS_FULFILLED = 'GET_ALL_PHOTOS_FULFILLED'
 const GET_APPTS = 'GET_APPTS'
 
 // Action Creators
@@ -39,6 +36,15 @@ export function getUser() {
         return {
             type: GET_USER,
             payload: userInfo
+        }
+}
+
+export function getUsers() {
+    const usersInfo = axios.get('/api/admin').then( res => res.data )
+
+        return {
+            type: GET_USERS,
+            payload: usersInfo
         }
 }
 
@@ -94,14 +100,22 @@ export function getAppts( appt ) {
 export default function reducer( state = initialState, action ) {
     switch ( action.type ) {
         case GET_USER + '_FULFILLED':
-
             return Object.assign( {}, state, { userData: action.payload } )
+
+        case GET_USERS + '_FULFILLED':
+            return Object.assign( {}, state, { rejected: 'Welcome admin', users: action.payload } )
+
+        case GET_USERS + '_REJECTED':
+            return Object.assign( {}, state, { rejected: 'Your are not admin!' } )
 
         case GET_ALL_PRODUCTS + '_PENDING':
             return Object.assign( {}, state, { loading: true } )
 
         case GET_ALL_PRODUCTS + '_FULFILLED':
-            return Object.assign( {}, state, { loading: false, products: action.payload } )
+            return Object.assign( {}, state, { loading: false, products: action.payload, rejected: '' } )
+
+        case GET_ALL_PRODUCTS + '_REJECTED':
+            return Object.assign( {}, state, { loading: false, rejected: 'Login Required' } )
 
         case ADD_TO_SHOPPING_CART:
             return Object.assign( {}, state, { shoppingCart: [...state.shoppingCart, action.payload] } )

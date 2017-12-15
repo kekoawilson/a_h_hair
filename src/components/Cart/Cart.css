@@ -1,0 +1,15 @@
+.Cart {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+}
+
+.cart-img {
+    height: 20vh;
+    width: 20vw;
+}
+
+.cart-container {
+    height: 50vh;
+    width: auto;
+}

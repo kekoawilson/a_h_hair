@@ -1,6 +1,7 @@
-/* .Dashboard {
+.Dashboard {
     display: flex;
-} */
+    flex-direction: column;
+}
 
 /* .masonry-container {
     width: 80%;
@@ -32,7 +33,7 @@
     
 }
 
-https://static1.squarespace.com/static/55e49451e4b0fbac6883f7a3/t/55e5dfbfe4b065e3bc87a29d/1441128386052/thewoodsweb4.jpg
+/* https://static1.squarespace.com/static/55e49451e4b0fbac6883f7a3/t/55e5dfbfe4b065e3bc87a29d/1441128386052/thewoodsweb4.jpg */
 
 .comb {
     height: 100vh;
@@ -58,8 +59,15 @@ https://static1.squarespace.com/static/55e49451e4b0fbac6883f7a3/t/55e5dfbfe4b065
     text-align: center;
 }
 
-.logo {
-    height: 20vh;
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.logo-dash {
+    height: 30vh;
+    width: auto;
 }
 
 

@@ -1,15 +1,41 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getUsers } from '../../ducks/reducer';
 
 
 
 class Admin extends Component {
+
+  componentDidMount() {
+    this.props.getUsers()
+  }
+
     render() {
+      let displayUsers = this.props.users.map( ( users, i ) => {
+        return (
+          <div key={ i }>
+          <p>{ users.name_first }</p>
+          <p>{ users.name_lastn}</p>
+          <p>{ users.email }</p>
+          <p>{ users.user_type }</p>
+          <img src={ users.img } />
+          </div>
+        )
+      })
       return (
           <div className="Admin">
-            <p>you made it</p>
+            <p>{this.props.rejected}</p>
+            { displayUsers }
           </div>
       );
     }
   }
+
+  function mapStateToProps( state ){
+    return {
+      rejected: state.rejected,
+      users: state.users
+    }
+  }
   
-  export default Admin;
+  export default connect(mapStateToProps, { getUsers } )(Admin);

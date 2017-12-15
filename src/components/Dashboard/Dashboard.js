@@ -57,11 +57,11 @@ class Dashboard extends Component {
           </Masonry>
     </div> */}
           <div className='parallax-photo'>
-            <div> 
-            <img className='logo' src={ logo } alt='logo'/>
+            <div className='logo-container' > 
+            <img className='logo-dash' src={ logo } alt='logo'/>
             </div>
           </div>
-          <div className='top-section'>
+          <div className='top-section-dash'>
             <h2>Your Dream haircut</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia vel nisi eu dignissim. Morbi venenatis magna id felis mollis, in commodo tortor congue. Quisque vitae iaculis nibh, eu ullamcorper diam. Phasellus et enim id quam dignissim finibus. Phasellus auctor condimentum nisl fermentum porta. Nam sit amet rutrum eros, quis pretium arcu. Nunc imperdiet pulvinar nunc et dignissim. Fusce bibendum, leo at elementum tristique, metus arcu pulvinar nibh, eget ultricies enim tellus a nibh. Donec justo ex, pharetra vel sollicitudin et, euismod nec nibh. Ut et vestibulum urna, sit amet molestie dui. In venenatis vulputate nisl, a dapibus sem ultricies ut. Aenean ut vulputate dui.</p>
             
@@ -69,7 +69,7 @@ class Dashboard extends Component {
           
           </div>
           <MatGridListDash/>
-          <div className='middle-section'>
+          <div className='middle-section-dash'>
           <p>Aliquam eu nulla feugiat, laoreet nisl vel, vehicula turpis. Suspendisse eleifend lobortis sollicitudin. Sed leo sem, maximus id arcu sit amet, dapibus dapibus eros. Nulla metus metus, consequat ut felis sit amet, commodo luctus ipsum. Pellentesque porttitor efficitur lorem eu tincidunt. Donec turpis elit, bibendum ut tempor eu, tempor ac elit.</p>
           </div>
           

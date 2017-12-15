@@ -59,8 +59,8 @@ passport.use( new Auth0Strategy( {
 // Auth
 app.get( '/auth', passport.authenticate( 'auth0' ) )
 app.get( '/auth/callback', passport.authenticate( 'auth0', {
-    successRedirect: 'http://localhost:3000/#/private',
-    failureRedirect: 'http://localhost:3000/#/'
+    successRedirect: process.env.AUTH_LANDING_REDIRECT,
+    failureRedirect: process.env.AUTH_LANDING_REDIRECT
 } ) )
 
 passport.serializeUser( ( ID, done ) => done( null, ID ) ) // saves user id to session
@@ -74,7 +74,7 @@ passport.deserializeUser( ( ID, done ) => {
     } )
 } )
 
-app.get( '/auth/verify', controller.verify ) // used for auth and also to get updated info for profile view
+app.get( '/auth/verify', controller.verify, controller.checkAdmin ) // used for auth and also to get updated info for profile view
 
 app.get( '/auth/logout', controller.logout )
 
@@ -89,7 +89,7 @@ app.post( '/api/send' , ( req, res ) => {
             pass: process.env.NODEMAILER_PASS
         }
     })
-    console.log('req.body', req.body);
+    console.log( 'req.body', req.body );
     
     const mailOptions = {
         from: process.env.NODEMAILER_USER,
@@ -108,13 +108,18 @@ app.post( '/api/send' , ( req, res ) => {
     })
 } )
 
+// Admin
+
+app.get( '/api/admin' , controller.checkAdmin, controller.getUsers )
+
 // User
 
 app.put( '/api/user/updateUser/:id', controller.updateUser )
 
 // Shop
 
-app.get( '/api/shop', controller.getProducts ) 
+app.get( '/api/shop', controller.verify, controller.getProducts )
+
 
 // Booking
 

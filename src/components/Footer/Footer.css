@@ -5,7 +5,7 @@
     margin: 0;
     height: 15vh;
     width: 100vw;
-    border: solid black 1px;
+    /* border: solid black 1px; */
 }
 
 .fb {
@@ -15,10 +15,26 @@
     align-items: center;
     height: inherit;
     width: 18vw;
-    border: black solid 1px;
+    /* border: black solid 1px; */
     /* a: {
 
     } */
+}
+
+.logo-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: 18vw;
+    margin: 0 10px;
+}
+
+.logo-foot {
+    height: 14vh;
+    width: auto;
+
 }
 
 .ig {
@@ -28,7 +44,7 @@
     align-items: center;
     height: inherit;
     width: 18vw;
-    border: black solid 1px;
+    /* border: black solid 1px; */
     /* a: {
 
     } */

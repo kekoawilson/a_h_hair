@@ -25,7 +25,7 @@ class App extends Component {
           <MatAppBar/>
           
           <Route path='/about' component={ About } />
-          <Route path='/private' component={ Admin } />
+          <Route path='/admin' component={ Admin } />
           <Route path='/bridals' component={ Bridals } />
           <Route path='/cart' component={ Cart } />
           <Route exact path='/' component={ Dashboard } />
