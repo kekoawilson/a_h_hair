@@ -35,10 +35,6 @@
 
 /* https://static1.squarespace.com/static/55e49451e4b0fbac6883f7a3/t/55e5dfbfe4b065e3bc87a29d/1441128386052/thewoodsweb4.jpg */
 
-.comb {
-    height: 100vh;
-    width: 120vw;
-}
 
 .top-section-dash {
     height: 40vh;
@@ -47,10 +43,6 @@
     text-align: center;
 }
 
-.hair-salon {
-    height: 10vh;
-    width: auto;
-}
 
 .middle-section-dash {
     height: 22vh;
