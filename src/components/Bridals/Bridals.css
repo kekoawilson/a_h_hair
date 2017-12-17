@@ -41,18 +41,41 @@
 }
         
 
-@media(min-width:430px) {
+@media(min-width:425px) {
     .bridal-text-wrapper {
-        height: 22vh;
+        height: 20vh;
     }
     .bridal-text {
-        margin: 20px;
+        margin: 16px;
+    }
+    .bridal-container-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }
 
 @media(min-width:768px) {
     .bridal-text-wrapper {
         height: 20vh;
+    }
+    .bridal-text {
+        margin: 20px;
+    }
+    .bridal-container-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 97px;
+    }
+}
+
+@media(min-width:1024px) {
+    .bridal-text-wrapper {
+        height: 20vh;
+    }
+    .bridal-text {
+        margin: 20px;
     }
     .bridal-container-wrapper {
         display: flex;
@@ -61,9 +84,12 @@
     }
 }
 
-@media(min-width:1024px) {
+@media(min-width:1440px) {
     .bridal-text-wrapper {
         height: 18vh;
+    }
+    .bridal-text {
+        margin: 20px;
     }
     .bridal-container-wrapper {
         display: flex;

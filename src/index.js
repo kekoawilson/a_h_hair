@@ -62,7 +62,7 @@ const muiTheme = getMuiTheme({
         "requiredColor": "#d32f2f"
     },
     "raisedButton": {
-        primaryColor: "#757575",
+        primaryColor: "#bdbdbd",
         color: white,
         
     },

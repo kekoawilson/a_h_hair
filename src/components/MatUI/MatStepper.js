@@ -58,15 +58,23 @@ class MatStepper extends Component {
     }
   };
 
-  handleClick = () => {
-    const { stepIndex } = this.state
+  handleClick = ( event ) => {
+    // const { stepIndex } = this.state
+    event.preventDefault()
     this.addAppt()
     this.setState({
       open: true,
-      stepIndex: stepIndex,
-      finished: true,
-      // stepIndex: stepIndex + 1
+      stepIndex: 0,
+      finished: false,
+      meridies: '',
+      time: '',
+      date: '',
+      servicesChosen: []
     });
+    // onClick={(event) => {
+    //   event.preventDefault();
+    //   this.setState( {stepIndex: 0, finished: false,  } );
+    // }
   };
 
   handleActionClick = () => {
@@ -175,7 +183,7 @@ class MatStepper extends Component {
       return (
         <div style={contentStyle}>
           <p>
-            <a
+            {/*<a
             //   href="#"
               onClick={(event) => {
                 event.preventDefault();
@@ -183,7 +191,7 @@ class MatStepper extends Component {
               }}
             >
               Reset
-            </a>
+            </a>*/}
           </p>
         </div>
       );
@@ -203,6 +211,10 @@ class MatStepper extends Component {
             label={stepIndex === 2 ? 'Book It!' : 'Next'}
             primary={true}
             onClick={stepIndex === 2 ? this.handleClick : this.handleNext }
+            // onClick={(event) => {
+            //   event.preventDefault();
+            //   this.setState( {stepIndex: 0, finished: false, meridies: '', time: '', date: '', servicesChosen: [] } );
+            // }}
           />
           <Snackbar
           open={this.state.open}

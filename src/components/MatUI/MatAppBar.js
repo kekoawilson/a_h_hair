@@ -46,16 +46,16 @@ class MatAppBar extends Component {
             <div>
             <Drawer 
             docked={ false }
-            width={ 200 }  // media query for full page
+            width={ 200 }
             open={ this.state.open }
             onRequestChange={ open => this.setState( { open } ) }
             >
             <Link to='/'><MenuItem onClick={ this.closeDrawer }>Home</MenuItem></Link>
-            <Link to='/shop'><MenuItem onClick={ this.closeDrawer }>Shop</MenuItem></Link>
             <Link to='/bridals'><MenuItem onClick={ this.closeDrawer }>Bridals</MenuItem></Link>
-            <Link to='/about'><MenuItem onClick={ this.closeDrawer }>About</MenuItem></Link>
-            <Link to='/booking'><MenuItem onClick={ this.closeDrawer }>Book Appt</MenuItem></Link>
             <Link to='/gallery'><MenuItem onClick={ this.closeDrawer }>Gallery</MenuItem></Link>
+            <Link to='/about'><MenuItem onClick={ this.closeDrawer }>About</MenuItem></Link>
+            <Link to='/shop'><MenuItem onClick={ this.closeDrawer }>Shop</MenuItem></Link>
+            <Link to='/booking'><MenuItem onClick={ this.closeDrawer }>Book Appt</MenuItem></Link>
             
             
             </Drawer>

@@ -14,7 +14,7 @@ h3 {
 }
 
 .top-section-about {
-    border: dashed orchid 1px;
+    /* border: dashed orchid 1px; */
     display: flex;
     flex-direction: column;
     height: 781px;
@@ -44,7 +44,7 @@ h3 {
 }
 
 .about-me {
-    border: greenyellow 1px solid;
+    /* border: greenyellow 1px solid; */
     height: 200px;
     width: 100vw;
     margin-top: 25px;
@@ -56,7 +56,7 @@ h3 {
     font-size: 17px;
     letter-spacing: 1px;
     line-height: 28px;
-    border: solid black 1px;
+    /* border: solid black 1px; */
     
 }
 
@@ -66,7 +66,7 @@ h3 {
     width: 100vw;
     line-height: 30px;
     padding-top: 5px;
-    border: solid black 1px;
+    /* border: solid black 1px; */
 }
 
 .iframe-about {

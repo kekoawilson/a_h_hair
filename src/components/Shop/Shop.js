@@ -39,7 +39,7 @@ class Shop extends Component {
 
       return (
           <div className="Shop">
-            <h2>Welcome to the Shop</h2>
+            <div className='bg-product'></div>
 
             {/* displayProducts */}
              <MatGridListShop/>
