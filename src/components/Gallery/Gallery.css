@@ -1,0 +1,42 @@
+.Gallery {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.masonry-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    border: 1px solid rgba( 0, 0, 0, .1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.imhere {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* height: 21vh; */
+    /* width: auto; */
+}
+
+.tile {
+    margin: 4px;
+    /* height: 21vh; */
+    /* width: auto; */
+}
+
+
+
+.hi {
+    height: 24vh;
+    width: auto;
+}
+
+.img { 
+    box-shadow: 0 1px 1px 2px rgba( 0, 0, 0, .15);
+    border-radius: 10px;
+    width: 100%;
+}

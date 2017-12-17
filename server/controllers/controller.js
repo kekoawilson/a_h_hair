@@ -4,17 +4,17 @@ module.exports = {
         let response = req.user,
             status = 200,
             db = req.app.get( 'db' )
-        
+        console.log('hit');
         if( !response ) {
           return res.status( 401 ).send( 'LOGIN REQUIRED' )
-        }
+        } 
         
-        db.find_user_session( [response.id] ).then( user => res.send( user ) )
+        db.find_user_session( [response.id] ).then( user => res.status( status ).send( user ) )
     },
 
     logout ( req, res, next ) {
         req.logout()
-        res.redirect( 'http://localhost:3000/#/' )
+        res.redirect( process.env.REACT_APP_LOGOUT )
     },
 
     updateUser ( req, res, next ) {
@@ -59,6 +59,16 @@ module.exports = {
         db.get_appointments( [req.body] ).then( appts => res.send( appts ) )
     },
 
+    addAppt( req, res, next ) {
+        console.log('req',req.user );
+        let db = req.app.get( 'db' ),
+            { date, time, service } = req.body,
+            user = req.user.id,
+            serviceList = service.map( ( e, i ) => e.services + ' ' + e.price ).join( ', ' )
+
+        db.add_appointment( [user, date, time, serviceList] ).then( appt => res.send( appt ) )
+    },
+
     getPhotos( req, res, next ) {
         let db = req.app.get( 'db' )
         let photoType = req.url.split( '/' )[2]
@@ -71,11 +81,12 @@ module.exports = {
     },
 
     checkAdmin( req, res, next ) {
-        if ( req.user.type === 'admin' ) {
+        console.log('req.user', req.user);
+        if ( req.user && req.user.user_type === 'admin' ) {
             next()
         } else {
-            req.redirect( 'http://localhost:3000/#/' )
-        }
+            return res.status( 401 ).send( 'notAdmin' )
+            }
     }
 
 }

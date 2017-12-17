@@ -5,10 +5,6 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 
 
 class MatTable extends Component {
-    constructor( props ) {
-        super( props )
-        
-    }
     
     componentDidMount() {
         this.props.getAllServices()
@@ -20,7 +16,9 @@ class MatTable extends Component {
             selectable={ true }
             multiSelectable={ true }
             showCheckboxes={ true }
-            fixedHeader={ true }>
+            fixedHeader={ true }
+            onRowSelection={ rows => this.props.selectRow( rows ) }
+            >
             <TableHeader
             showCheckboxes={ true }
             >
@@ -31,11 +29,15 @@ class MatTable extends Component {
             </TableHeader>
             <TableBody 
             stripedRows={ true }
-            deselectOnClickaway={ true }
+            deselectOnClickaway={ false }
+            showRowHover={ true }
             >
             { this.props.servicesList.map( ( row, i ) => {
                 return ( 
-                    <TableRow key={ i }>
+                    <TableRow 
+                    key={ i } 
+                    hoverable={ true }
+                    >
                     <TableRowColumn>{ row.services }</TableRowColumn>
                     <TableRowColumn>{ row.price }</TableRowColumn>
                 </TableRow>

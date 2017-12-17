@@ -34,14 +34,14 @@ insert into purchases ( purchase_date, order_number )
 values ( );
 
 create table appointments (
-    appt_id integer references users( id )
+    appt_id serial primary key,
+    user_id integer references users( id ),
     appt_date text,
     appt_time text,
-    appt_location text,
-    appt_type text
+    appt_service text
 );
 
-insert into appointments ( appt_date, appt_time, appt_location, appt_type )
+insert into appointments ( appt_date, appt_time, appt_service )
 values ( );
 
 

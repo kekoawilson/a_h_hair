@@ -1,19 +1,45 @@
 import React, { Component } from 'react';
-import { Step, Stepper, StepLabel, RaisedButton, FlatButton, DatePicker } from 'material-ui';
+import { Step, Stepper, StepLabel, RaisedButton, FlatButton, Snackbar } from 'material-ui';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 // import TextField from 'material-ui/TextField';
 import MatTable from '../MatUI/MatTable'
 import TimeSelector from '../MatUI/MatTimeSelector'
 import MatInput from '../MatUI/MatInput'
+import { connect } from 'react-redux'
+import { getAllServices } from '../../ducks/reducer'
+import MatDatePicker from '../MatUI/MatDatePicker'
+import axios from 'axios'
+
 
 
 class MatStepper extends Component {
+  constructor() {
+    super()
 
-  state = {
-    loading: false,
-    finished: false,
-    stepIndex: 0,
-  };
+    this.state = {
+      loading: false,
+      finished: false,
+      stepIndex: 0,
+      open: false,
+      autoHideDuration: 4000,
+      message: 'Appointment has been booked.',
+      meridies: '',
+      time: '',
+      date: null,
+      servicesChosen: []
+  
+    };
+    this.handleChange = this.handleChange.bind( this )
+    this.handleChange2 = this.handleChange2.bind( this )
+    this.selectRow = this.selectRow.bind( this )
+    this.dateChange = this.dateChange.bind( this )
+    this.addAppt = this.addAppt.bind( this )
+  }
+
+  componentDidMount() {
+    this.props.getAllServices()
+  }
+
 
   dummyAsync = (cb) => {
     this.setState({loading: true}, () => {
@@ -32,6 +58,38 @@ class MatStepper extends Component {
     }
   };
 
+  handleClick = ( event ) => {
+    // const { stepIndex } = this.state
+    event.preventDefault()
+    this.addAppt()
+    this.setState({
+      open: true,
+      stepIndex: 0,
+      finished: false,
+      meridies: '',
+      time: '',
+      date: '',
+      servicesChosen: []
+    });
+    // onClick={(event) => {
+    //   event.preventDefault();
+    //   this.setState( {stepIndex: 0, finished: false,  } );
+    // }
+  };
+
+  handleActionClick = () => {
+    this.setState( {
+      open: false
+    })
+    alert('Appointment canceled.')
+  }
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    })
+  }
+
   handlePrev = () => {
     const {stepIndex} = this.state;
     if (!this.state.loading) {
@@ -42,26 +100,76 @@ class MatStepper extends Component {
     }
   };
 
+  handleChange = ( event, index, meridies ) => this.setState( { meridies } );
+  handleChange2 = ( event, index, time ) => this.setState( { time } );
+  
+  dateChange( e, date ) {
+    this.setState( {
+      date
+    } )
+  }
+
+  selectRow( rows ) {
+    console.log('parent', rows);
+    let selected = []
+    rows.map( ( position, i ) => {
+      return selected.push( this.props.servicesList[ position ] )
+    } )
+
+    this.setState( {
+      servicesChosen: selected
+    })
+    console.log( 'selected', selected );
+
+  }
+
+  addAppt() {
+    let appt = { 
+      date: this.state.date,
+      time: this.state.time,
+      service: this.state.servicesChosen
+    }
+
+    axios.post( '/api/addAppt', appt ).then( res => {
+      console.log('res', res.data )
+      axios.post( '/api/send', res.data ).then( response => {
+        console.log('response', response.data);
+      })
+    })
+  }
+
   getStepContent( stepIndex ) {
     switch ( stepIndex ) {
       case 0:
         return (
-          <MatTable/>
+          <MatTable
+          selectRow={ this.selectRow }/>
         );
       case 1:
         return (
           <div>
-            <DatePicker
+            <MatDatePicker
+            dateChange={ this.dateChange }
+            date={ this.state.date }
             hintText='Click Here'
             />
-            <TimeSelector/>
+            <TimeSelector 
+            meridies={ this.state.meridies }
+            time={ this.state.time }
+            handleChange={ this.handleChange }
+            handleChange2={ this.handleChange2 }/>
             
           </div>
         );
       case 2:
         return (
-          <MatInput/>
+          <MatInput servicesChosen={ this.state.servicesChosen }
+          date={ this.state.date }
+          time={ this.state.time }
+          value={ this.state.value }          
+          />
         );
+  
       default:
         return 'You\'re a long way from home sonny jim!';
     }
@@ -75,15 +183,15 @@ class MatStepper extends Component {
       return (
         <div style={contentStyle}>
           <p>
-            <a
+            {/*<a
             //   href="#"
               onClick={(event) => {
                 event.preventDefault();
-                this.setState({stepIndex: 0, finished: false});
+                this.setState( {stepIndex: 0, finished: false, meridies: '', time: '', date: '', servicesChosen: [] } );
               }}
             >
               Reset
-            </a>
+            </a>*/}
           </p>
         </div>
       );
@@ -102,8 +210,20 @@ class MatStepper extends Component {
           <RaisedButton
             label={stepIndex === 2 ? 'Book It!' : 'Next'}
             primary={true}
-            onClick={this.handleNext}
+            onClick={stepIndex === 2 ? this.handleClick : this.handleNext }
+            // onClick={(event) => {
+            //   event.preventDefault();
+            //   this.setState( {stepIndex: 0, finished: false, meridies: '', time: '', date: '', servicesChosen: [] } );
+            // }}
           />
+          <Snackbar
+          open={this.state.open}
+          message={this.state.message}
+          action='cancel'
+          autoHideDuration={this.state.autoHideDuration}
+          onActionClick={this.handleActionClick}
+          onRequestClose={this.handleRequestClose}
+        />
         </div>
       </div>
     );
@@ -111,7 +231,7 @@ class MatStepper extends Component {
 
   render() {
     const {loading, stepIndex} = this.state;
-
+    console.log(this.state);
     return (
       <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
         <Stepper 
@@ -135,4 +255,14 @@ class MatStepper extends Component {
   }
 }
 
-export default MatStepper;
+let outputActions = {
+  getAllServices
+}
+
+function mapStateToProps( state ) {
+  return {
+    servicesList: state.servicesList
+  }
+}
+
+export default connect( mapStateToProps, outputActions )( MatStepper );

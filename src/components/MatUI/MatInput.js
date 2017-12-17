@@ -2,44 +2,42 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 
 export default class MatInput extends React.Component {
+  
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: '',
-      service: [],
-      day: '',
-      meridies: '',
-      time: ''
-    };
-  }
-
-  handleChange = (event) => {
-    this.setState({
+  handleChange = ( event ) => {
+    this.setState( {
       value: event.target.value,
-    });
+    } );
   };
 
   render() {
+   
+    let displayAppt = this.props.servicesChosen.map( ( e, i ) => {
+      return (
+        <TextField
+        value={ `${ e.services } ${ e.price}` }
+        // onChange={ this.handleChange }
+        disabled={ false }
+      />
+      )
+    })
+
+
     return (
       <div>
-        <TextField
-          id='Service'
-          value={this.props.service}
-          onChange={this.handleChange}
-        />
-
+        { displayAppt }
         <TextField
           id='Day'        
-          value={this.state.day}
-          onChange={this.handleChange}
+          value={ this.props.date }
+          // onChange={ this.handleChange }
+          disabled={ false }          
         />
 
         <TextField
           id='Time'        
-          value={this.state.time}
-          onChange={this.handleChange}
+          value={ this.props.time }
+          // onChange={ this.handleChange }
+          disabled={ false }          
         />
 
       </div>

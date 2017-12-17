@@ -1,0 +1,57 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+    height: 15vh;
+    width: 100vw;
+    /* background: black; */
+    /* border: solid black 1px; */
+}
+
+.fb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: 18vw;
+    /* border: black solid 1px; */
+    /* a: {
+
+    } */
+}
+
+.logo-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: 18vw;
+    margin: 0 10px;
+}
+
+.logo-foot {
+    height: 14vh;
+    width: auto;
+
+}
+
+.ig {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: 18vw;
+    /* border: black solid 1px; */
+    /* a: {
+
+    } */
+}
+
+i, .fa-instagram, .fa-facebook {
+    font-size: 5vh;
+    color: black;
+}

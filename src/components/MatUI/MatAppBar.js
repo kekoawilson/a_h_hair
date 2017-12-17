@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Drawer, MenuItem, IconButton, Avatar } from 'material-ui';
+import { AppBar, Drawer, MenuItem, IconButton } from 'material-ui';
 import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart';
 import Person from 'material-ui/svg-icons/social/person';
-// import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg';
+// import { logo } from '../../assets/Addee_Hunt_Hair_Logo-3.svg';
 
-
-
+const style = {
+    fontFamily: "Satisfy"
+}
 class MatAppBar extends Component {
     constructor( props ) {
         super( props )
@@ -45,23 +46,27 @@ class MatAppBar extends Component {
             <div>
             <Drawer 
             docked={ false }
-            width={ 200 }  // media query for full page
+            width={ 200 }
             open={ this.state.open }
             onRequestChange={ open => this.setState( { open } ) }
             >
             <Link to='/'><MenuItem onClick={ this.closeDrawer }>Home</MenuItem></Link>
-            <Link to='/shop'><MenuItem onClick={ this.closeDrawer }>Shop</MenuItem></Link>
             <Link to='/bridals'><MenuItem onClick={ this.closeDrawer }>Bridals</MenuItem></Link>
+            <Link to='/gallery'><MenuItem onClick={ this.closeDrawer }>Gallery</MenuItem></Link>
             <Link to='/about'><MenuItem onClick={ this.closeDrawer }>About</MenuItem></Link>
+            <Link to='/shop'><MenuItem onClick={ this.closeDrawer }>Shop</MenuItem></Link>
             <Link to='/booking'><MenuItem onClick={ this.closeDrawer }>Book Appt</MenuItem></Link>
             
             
             </Drawer>
             <AppBar
             // img='../../assets/logo.png'
+            title='Addee Hunt Hair'
+            titleStyle={ style }
             showMenuIconButton={ true } // Shows the hamburger menu on the left of the title
             iconElementRight={ rightButtons }
-            onLeftIconButtonClick={ this.openDrawer }
+            onLeftIconButtonClick={ this.openDrawer } 
+            
             />
             </div>
         )

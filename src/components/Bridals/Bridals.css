@@ -1,29 +1,99 @@
-.instagram-media {
-     background:#FFF; 
-     border:0; 
-     border-radius:3px; 
-     box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); 
-     margin: 1px; 
-     max-width:658px; 
-     padding:0; 
-     width:99.375%; 
-     width:-webkit-calc(100% - 2px); 
-     width:calc(100% - 2px);
-     padding:8px;
-     background:#F8F8F8;
-     line-height:0; 
-     margin-top:40px; 
-     padding:59.074074074074076% 0;
-     text-align:center;
-     width:100%;"
-     background:urldata:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC; 
-     display:block; 
-     height:44px; 
-     margin:0 auto -44px; 
-     position:relative; 
-     top:-22px; 
-     width:44px;
+.Bridals {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
-     p {
-         color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BYT-mTYlu7J/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Hair By Addee Hunt (@addeehunthair)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-08-27T21:22:16+00:00">Aug 27, 2017 at 2:22pm PDT</time></p></div></blockquote> <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+.bg-image {
+    background-image: url("https://s3.us-east-2.amazonaws.com/addeehunthair/ig-photos/24838951_684023701805454_3065064824804212736_n.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+.bridal-pic {
+    height: 28vh;
+    width: auto;
+}
+
+.bridal-text-wrapper {
+    height: 24vh;
+    width: 100vw;
+}
+        
+.h2 {
+    font-size: 20px;
+}
+
+.bridal-text, h2 {
+    margin: 10px;
+    line-height: 18px;
+}
+
+.bridal-container-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+        
+
+@media(min-width:425px) {
+    .bridal-text-wrapper {
+        height: 20vh;
+    }
+    .bridal-text {
+        margin: 16px;
+    }
+    .bridal-container-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media(min-width:768px) {
+    .bridal-text-wrapper {
+        height: 20vh;
+    }
+    .bridal-text {
+        margin: 20px;
+    }
+    .bridal-container-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 97px;
+    }
+}
+
+@media(min-width:1024px) {
+    .bridal-text-wrapper {
+        height: 20vh;
+    }
+    .bridal-text {
+        margin: 20px;
+    }
+    .bridal-container-wrapper {
+        display: flex;
+        flex-direction: row;
+        margin: 0 274px;
+    }
+}
+
+@media(min-width:1440px) {
+    .bridal-text-wrapper {
+        height: 18vh;
+    }
+    .bridal-text {
+        margin: 20px;
+    }
+    .bridal-container-wrapper {
+        display: flex;
+        flex-direction: row;
+        margin: 0 306px;
+    }
+}
