@@ -15,10 +15,10 @@ class Admin extends Component {
         return (
           <div key={ i }>
           <p>{ users.name_first }</p>
-          <p>{ users.name_lastn}</p>
+          <p>{ users.name_last}</p>
           <p>{ users.email }</p>
           <p>{ users.user_type }</p>
-          <img src={ users.img } />
+          <img src={ users.img } alt='users profile picture'/>
           </div>
         )
       })

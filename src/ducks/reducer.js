@@ -10,7 +10,7 @@ const initialState = {
     servicesChosen: '',
     day: '',
     time: '',
-    rejected: ''
+    loginMessage: ''
 }
 
 // Action Types/ Constants
@@ -28,10 +28,7 @@ const GET_APPTS = 'GET_APPTS'
 
 export function getUser() {
     const userInfo = axios.get('auth/verify')
-        .then( res => {
-            console.log(res.data);
-            return res.data;
-        })
+        .then( res => res.data )
 
         return {
             type: GET_USER,
@@ -40,7 +37,8 @@ export function getUser() {
 }
 
 export function getUsers() {
-    const usersInfo = axios.get('/api/admin').then( res => res.data )
+    const usersInfo = axios.get('/api/admin')
+        .then( res => res.data )
 
         return {
             type: GET_USERS,
@@ -49,11 +47,14 @@ export function getUsers() {
 }
 
 export function addToShoppingCart( product ) {
+    
     return {
         type: ADD_TO_SHOPPING_CART,
         payload: product
     }
+
 }
+       
 
 export function removeFromShoppingCart( product_name ) {
     console.log( 'reducer', product_name );
@@ -64,7 +65,9 @@ export function removeFromShoppingCart( product_name ) {
 }
 
 export function getAllProducts( products ) {
-    let productInfo = axios.get( '/api/shop' ).then( res => res.data )
+    let productInfo = axios.get( '/api/shop' )
+        .then( res => res.data )
+
     return {
         type: GET_ALL_PRODUCTS,
         payload: productInfo
@@ -72,7 +75,9 @@ export function getAllProducts( products ) {
 }
 
 export function getAllServices( services ) {
-    let servicesInfo = axios.get( '/api/services' ).then( res => res.data )
+    let servicesInfo = axios.get( '/api/services' )
+        .then( res => res.data )
+
     return {
         type: GET_ALL_SERVICES,
         payload: servicesInfo
@@ -80,7 +85,9 @@ export function getAllServices( services ) {
 }
 
 export function getAllPhotos( photoType ) {
-    let photosInfo = axios.get( `/api/${photoType}` ).then( res => res.data )
+    let photosInfo = axios.get( `/api/${photoType}` )
+        .then( res => res.data )
+
     return {
         type: GET_ALL_PHOTOS,
         payload: photosInfo
@@ -88,7 +95,9 @@ export function getAllPhotos( photoType ) {
 }
 
 export function getAppts( appt ) {
-    let apptInfo = axios.get( '/api/send' ).then( res => res.data )
+    let apptInfo = axios.get( '/api/send' )
+        .then( res => res.data )
+
     return {
         type: GET_APPTS,
         payload: apptInfo
@@ -103,23 +112,27 @@ export default function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { userData: action.payload } )
 
         case GET_USERS + '_FULFILLED':
-            return Object.assign( {}, state, { rejected: 'Welcome admin', users: action.payload } )
+            return Object.assign( {}, state, { loginMessage: 'Welcome admin', users: action.payload } )
 
         case GET_USERS + '_REJECTED':
-            return Object.assign( {}, state, { rejected: 'Your are not admin!' } )
+            return Object.assign( {}, state, { loginMessage: 'Your are not admin!' } )
 
         case GET_ALL_PRODUCTS + '_PENDING':
             return Object.assign( {}, state, { loading: true } )
 
         case GET_ALL_PRODUCTS + '_FULFILLED':
-            return Object.assign( {}, state, { loading: false, products: action.payload, rejected: '' } )
+            return Object.assign( {}, state, { loading: false, products: action.payload, loginMessage: '' } )
 
         case GET_ALL_PRODUCTS + '_REJECTED':
-            return Object.assign( {}, state, { loading: false, rejected: 'Login Required' } )
+            return Object.assign( {}, state, { loading: false, loginMessage: 'Login Is Required' } )
 
-        case ADD_TO_SHOPPING_CART:
+        
+            case ADD_TO_SHOPPING_CART:
             return Object.assign( {}, state, { shoppingCart: [...state.shoppingCart, action.payload] } )
 
+        case ADD_TO_SHOPPING_CART + '_REJECTED':
+            return Object.assign( {}, state, {loginMessage: 'Login Required'})
+        
         case REMOVE_FROM_SHOPPING_CART:
             let newArray = state.shoppingCart.slice() // making a copy of state
             let newIndex = newArray.map( e => e.product_name ).indexOf( action.payload ) // mapping over the new copy of state and returning an obj. entering that obj using e.product_name to get that key off the obj. looking for the where that key exists and checking for matches from action.payload (product_name coming from front end)

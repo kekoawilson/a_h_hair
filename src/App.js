@@ -12,7 +12,6 @@ import Gallery from '../src/components/Gallery/Gallery.js';
 import MatAppBar from '../src/components/MatUI/MatAppBar';
 import Profile from '../src/components/Profile/Profile';
 import Shop from '../src/components/Shop/Shop.js';
-import Footer from '../src/components/Footer/Footer';
 
 
 

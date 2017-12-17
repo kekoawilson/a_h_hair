@@ -13,3 +13,17 @@
     height: 50vh;
     width: auto;
 }
+
+.cart-container-wrapper {
+    height: 90vh;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid black;
+}
+
+.cart-container {
+    height: 20vh;
+    width: auto;
+}

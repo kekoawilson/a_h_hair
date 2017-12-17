@@ -79,8 +79,11 @@ const muiTheme = getMuiTheme({
         "hoveredIconColor": "#2196f3",
         iconColor: "#2196f3",
     },
-    "snackBar": {
-        height: 50
+    "snackbar": {
+        height: 50,
+        "textColor": "#ffffff",
+        "backgroundColor": "rgba(0, 0, 0, 0.87)",
+        "actionColor": "#42a5f5"
     }
 })
 

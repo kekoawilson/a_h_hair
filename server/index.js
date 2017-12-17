@@ -118,7 +118,7 @@ app.put( '/api/user/updateUser/:id', controller.updateUser )
 
 // Shop
 
-app.get( '/api/shop', controller.verify, controller.getProducts )
+app.get( '/api/shop', controller.getProducts )
 
 
 // Booking

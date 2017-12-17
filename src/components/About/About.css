@@ -1,57 +1,90 @@
 .About {
     display: flex;
     flex-direction: column;
-
+    text-align: center;
 }
 
-.about-top-section {
+h2 {
+    font-size: 25px;
+    margin: 5px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.top-section-about {
     border: dashed orchid 1px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    height: 90vh;
+    height: 781px;
+    padding-top: 20px;
+}
+
+.color {
+    background-color: pink;
+    height: 333px;
+    width: 290px;;
+    align-self: center;
+    margin-right: 3em;
+}
+
+.addee {
+    height: 300px;
+    width: 300px;
+    margin-top: -17em;
+    align-self: center;
+}
+
+.addee2 {
+    height: 333px;
+    width: 290px;
+    margin-top: -19em;
+    align-self: center;
 }
 
 .about-me {
     border: greenyellow 1px solid;
-    height: 40vh;
-    width: 60vw;
-    align-self: flex-start;
+    height: 200px;
+    width: 100vw;
+    margin-top: 25px;
 }
-
-.addee {
-    height: 40vh;
-    width: 70vw;
-    align-self: flex-end;
-}
-
-.about-middle-section {
-    height: 80vh;
-    width: auto;
-    border: black 1 solid;
-}
-
-.contact-info {
-    font-size: 16px;
-    /* margin-right: 5px; */
-    height: inherit;
-    width: 40vw;
-    line-height: 21px;
-    border: solid black 1px;
-}
-
 
 .appt-box {
-    height: inherit;
-    width: 40vw;
+    height: 20vh;
+    width: 100vw;
     font-size: 17px;
     letter-spacing: 1px;
-    line-height: 27px;
+    line-height: 28px;
     border: solid black 1px;
     
 }
 
+.contact-info {
+    font-size: 16px;
+    height: 44vh;
+    width: 100vw;
+    line-height: 30px;
+    padding-top: 5px;
+    border: solid black 1px;
+}
+
+.iframe-about {
+    height: 45vh;
+}
+
 .bottom-section-about {
-    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    height: 95vh;
     width: auto;
+}
+
+.bs-location {
+    margin: 5px 0;
+}
+
+@media(max-width:) {
+
 }

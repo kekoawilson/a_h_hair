@@ -26,8 +26,15 @@ class Bridals extends Component {
           <div className="Bridals">
             <div className='bg-image' > 
             </div>
-
+            <div className='bridal-text-wrapper'>
+              <h2>Bridals</h2>
+              <p className='bridal-text'> Addee Hunt Hair offers services that allows you to have that perfect pinterest look you are searching for! </p>
+              <p className='bridal-text'>Pricing:</p>
+              <p className='bridal-text'>Bridal Updo $50+</p>
+            </div>
+            <div className='bridal-container-wrapper'>
             { displayBridals }
+            </div>
 
             {/*<img src={ bridal }/>*/}
             <Footer/>

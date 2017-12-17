@@ -7,11 +7,9 @@ module.exports = {
         console.log('hit');
         if( !response ) {
           return res.status( 401 ).send( 'LOGIN REQUIRED' )
-        } else {
-            return next()
-        }
+        } 
         
-        db.find_user_session( [response.id] ).then( user => res.send( user ) )
+        db.find_user_session( [response.id] ).then( user => res.status( status ).send( user ) )
     },
 
     logout ( req, res, next ) {
@@ -39,7 +37,6 @@ module.exports = {
 
     getProducts( req, res, next ) {
         let db = req.app.get( 'db' )
-        console.log('hit products');
 
         db.get_products( [req.body] ).then( products => res.send( products ) )
     },

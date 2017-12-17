@@ -36,7 +36,9 @@ class MatGridListShop extends Component {
       { this.props.products.map( ( tile, index ) => {
         const actionButtons = (
           <div>
-          <IconButton onClick={ () => this.props.addToShoppingCart( tile ) }><AddShoppingCart color="rgb(66, 244, 244)" /></IconButton>
+          <IconButton onClick={ () => {
+            console.log('hitshoppincartbutton');
+            this.props.addToShoppingCart( tile ) }}><AddShoppingCart color="rgb(66, 244, 244)" /></IconButton>
           <IconButton onClick={ () => this.props.removeFromShoppingCart( tile.product_name ) }><Delete color="rgb(114, 249, 164)" /></IconButton>
           </div>
         )
