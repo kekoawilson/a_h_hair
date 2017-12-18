@@ -24,7 +24,7 @@ class About extends Component {
           <div className='about-me'>
 
           <h2 className='media1'>About Me</h2>
-          <p className='media1'>Lorem ipsum dolor amet affogato ugh yuccie, four dollar toast poke raclette paleo chillwave. Lumber succulents gentrify kombucha 90's YOLO. Flannel hoodie gochujang prism irony. Hammock you probably haven't heard of them hashtag migas, craft beer biodiesel occupy readymade woke vinyl tumblr gastropub swag. Woke gentrify marfa paleo brooklyn mumblecore pabst XOXO blue bottle.</p>
+          <p className='media1, about-text'>Lorem ipsum dolor amet affogato ugh yuccie, four dollar toast poke raclette paleo chillwave. Lumber succulents gentrify kombucha 90's YOLO. Flannel hoodie gochujang prism irony. Hammock you probably haven't heard of them hashtag migas, craft beer biodiesel occupy readymade woke vinyl tumblr gastropub swag. Woke gentrify marfa paleo brooklyn mumblecore pabst XOXO blue bottle.</p>
         </div>
 
 
