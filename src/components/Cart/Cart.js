@@ -23,7 +23,7 @@ class Cart extends Component {
           <p>{ e.product_name }</p>
           <img className='cart-img' src={ e.product_img }/>
           <RaisedButton 
-          label="Remove from cart"
+          label="Remove"
           onClick={ () => this.props.removeFromShoppingCart( e.product_name ) }
           style={ style }
           />

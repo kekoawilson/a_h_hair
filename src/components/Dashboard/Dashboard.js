@@ -63,7 +63,7 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className='top-section-dash'>
-            <h2>Your Dream hairstyle is just a call or click away!</h2>
+            <h2 className='dash-h2'>Your Dream hairstyle is just a call or click away!</h2>
             <p>Book now before it's too late!</p>
           </div>
 

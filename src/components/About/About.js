@@ -13,39 +13,35 @@ class About extends Component {
       <div className="About">
 
         <section className='top-section-about'>
-        <div className='color'>
-        </div>
-        <img className='addee2' src={addee2} alt='addee' />
-        
-        
-        <div className='about-me'>
-
-            <h2>About Me</h2>
-            <p>Lorem ipsum dolor amet affogato ugh yuccie, four dollar toast poke raclette paleo chillwave. Lumbersexual succulents gentrify kombucha 90's YOLO. Flannel hoodie gochujang prism irony. Hammock you probably haven't heard of them hashtag migas, craft beer biodiesel occupy readymade woke vinyl tumblr gastropub swag. Woke gentrify marfa paleo brooklyn mumblecore pabst XOXO blue bottle.</p>
+          <div className='color'>
           </div>
+          <img className='addee2' src={addee2} alt='addee' />
 
-
-          
-          
-          
-          <div>
-          <h2>Contact</h2>
-          </div>
-          
-          <div className='appt-box'>
-          <h3>For inquiries or to book an appointment:
-          Call or Text me at 801.824.0344 or book your appointments online by clicking <Link to='/booking'>Here!</Link></h3>
-          
-          <p>*Please allow 24 hrs for response*</p>
-          
-          </div>
-          
           </section>
           
+          <section className='middle-section-about'>
+
+          <div className='about-me'>
+
+          <h2 className='media1'>About Me</h2>
+          <p className='media1'>Lorem ipsum dolor amet affogato ugh yuccie, four dollar toast poke raclette paleo chillwave. Lumbersexual succulents gentrify kombucha 90's YOLO. Flannel hoodie gochujang prism irony. Hammock you probably haven't heard of them hashtag migas, craft beer biodiesel occupy readymade woke vinyl tumblr gastropub swag. Woke gentrify marfa paleo brooklyn mumblecore pabst XOXO blue bottle.</p>
+        </div>
+
+
           
+          <div className='appt-box'>
           
-          
-          <section className='bottom-section-about'>
+          <h2 className='media1'>Contact</h2>
+            <h3 className='media1'>For inquiries or to book an appointment:
+          Call or Text me at 801.824.0344 or book your appointments online by clicking <Link to='/booking'>Here!</Link></h3>
+
+            <p className='media1'>*Please allow 24 hrs for response*</p>
+
+          </div>
+
+        </section>
+
+        <section className='bottom-section-about'>
           <h3 className='bs-location'>Located In Herriman, Utah</h3>
 
           <iframe className='iframe-about' title='Herriman' frameBorder="0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJPdx1-X-DUocRHiAXdCHLPbI&key=AIzaSyAp6UxvZoXIkbENQW2kgjE0wLrmNPJqcgQ" allowFullScreen={true}></iframe>
@@ -61,9 +57,9 @@ class About extends Component {
             <h3> Friday 8am - 5pm </h3>
             <h3> Sat 8am - 12pm </h3>
           </div>
-          </section>
-          
-          <Footer />
+        </section>
+
+        <Footer />
       </div>
     );
   }

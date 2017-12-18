@@ -5,12 +5,19 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup, Table} from 'material-ui';
 import { getAllServices } from '../../ducks/reducer';
-import { ActionFavorite } from 'material-ui/svg-icons/action/favorite'
-import { ActionFavoriteBorder } from 'material-ui/svg-icons/action/favorite-border'
+// import ActionFavorite from 'material-ui/svg-icons/action/favorite'
+// import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
 
 const styles = {
+  "palette": {
+    "primary1Color": "#ec407a",
+  },
   radioButton: {
     marginTop: 16,
+  },
+  "raisedButton": {
+      color: '#ec407a',
+      primaryColor: '#ec407a !important',
   }
 };
 
@@ -47,18 +54,6 @@ class MatDialog extends Component {
       />,
     ];
 
-    const radios = [];
-    for (let i = 0; i < 30; i++) {
-      radios.push(
-        <RadioButton
-          key={i}
-          value={`value${i + 1}`}
-          label={`Option ${i + 1}`}
-          style={styles.radioButton}
-        />
-      );
-    }
-
     
     const displayServices = this.props.servicesList.map( ( e, i ) => {
         return (
@@ -66,7 +61,8 @@ class MatDialog extends Component {
                 key={ i }
                 value={`value${i +1}`}
                 label={e.services}
-                // checkedIcon={<ActionFavorite style={{color: '#F44336'}} />}
+                disabled={true}
+                // checkedIcon={<ActionFavorite/>}
                 // uncheckedIcon={<ActionFavoriteBorder />}
                 style={styles.radioButton}
               />
@@ -75,7 +71,7 @@ class MatDialog extends Component {
 
     return (
       <div>
-        <RaisedButton label="List of Services" onClick={this.handleOpen} />
+        <RaisedButton label="List of Services" onClick={this.handleOpen} style={styles}/>
         <Dialog
           title="Services Offered"
           actions={actions}
@@ -83,6 +79,7 @@ class MatDialog extends Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
           autoScrollBodyContent={true}
+          style={styles}
         >
           <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
             {displayServices}
