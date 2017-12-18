@@ -109,6 +109,11 @@ export function getAppts( appt ) {
 export default function reducer( state = initialState, action ) {
     switch ( action.type ) {
         case GET_USER + '_FULFILLED':
+        console.log('action', action);
+            return Object.assign( {}, state, { userData: action.payload[0] } )
+
+        case GET_USER + '_REJECTED':
+        console.log('action', action);
             return Object.assign( {}, state, { userData: action.payload } )
 
         case GET_USERS + '_FULFILLED':
@@ -148,7 +153,10 @@ export default function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { loading: true } )
 
         case GET_ALL_SERVICES + '_FULFILLED':
-            return Object.assign( {}, state, { loading: false, servicesList: action.payload } )
+            return Object.assign( {}, state, { loading: false, servicesList: action.payload, loginMessage: '' } )
+
+        case GET_ALL_SERVICES + '_REJECTED':
+            return Object.assign( {}, state, { loading: false, loginMessage: 'Login Is Required To Select Services' } )
 
         case GET_ALL_PHOTOS + '_PENDING':
             return Object.assign( {}, state, { loading: true } )

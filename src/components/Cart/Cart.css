@@ -4,15 +4,6 @@
     /* height: 100vh; */
 }
 
-.cart-img {
-    height: 20vh;
-    width: 20vw;
-}
-
-.cart-container {
-    height: 50vh;
-    width: auto;
-}
 
 .cart-container-wrapper {
     height: 90vh;
@@ -24,7 +15,42 @@
 }
 
 .cart-container {
-    height: 20vh;
-    width: auto;
+    height: 35vh;
+    width: 100vw;
+    display: flex;
+    border: 1px solid black;
 }
 
+.cart-img-wrapper {
+    height: 100%;
+    width: 70%;
+}
+
+.cart-img {
+    height: 60%;
+    width: 70%;
+}
+
+.cart-info {
+    height: 100%;
+    width: 30%;
+}
+.prod-info {
+    height: 50%;
+    width: 100%;
+}
+
+.button-wrapper-cart {
+    height: 50%;
+    width: 100%;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.c-shop {
+    margin-right: 10px;
+}

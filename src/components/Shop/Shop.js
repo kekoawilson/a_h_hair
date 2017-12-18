@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 // import { getAllProducts } from '../../ducks/reducer';
 import '../Shop/Shop.css'
 import MatGridListShop from '../MatUI/MatGridListShop';
 import SnackBar from 'material-ui/Snackbar'
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Shop extends Component {
   constructor() {
@@ -47,6 +49,11 @@ class Shop extends Component {
              open={ this.state.open }
              message='You Must Login To Add To Your Cart'
              autoHideDuration={ 4000 } />
+             <div className='button-wrapper'>
+             <Link to='/cart'><RaisedButton
+            label='Go To Cart'
+            /></Link>
+             </div>
           </div>
       );
     }
