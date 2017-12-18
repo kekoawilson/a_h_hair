@@ -18,7 +18,7 @@ const muiTheme = getMuiTheme({
     fontFamily: 'Roboto, sans-serif',
     "palette": {
         "primary1Color": "#bdbdbd",
-        "primary2Color": "#424242",
+        "primary2Color": "#bdbdbd",
         "textColor": "rgba(0, 0, 0, 0.87)",
         "accent1Color": "#42a5f5",
         "accent2Color": "#00b0ff",
@@ -63,7 +63,8 @@ const muiTheme = getMuiTheme({
     },
     "raisedButton": {
         primaryColor: "#bdbdbd",
-        color: white,
+        color: "#f06292",
+        textColor: white,
         
     },
     "badge": {

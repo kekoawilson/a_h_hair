@@ -1,15 +1,17 @@
 module.exports = {
     
     verify( req, res, next ) {
+        console.log('verify', req.user)
         let response = req.user,
             status = 200,
             db = req.app.get( 'db' )
-        console.log('hit');
-        if( !response ) {
-          return res.status( 401 ).send( 'LOGIN REQUIRED' )
-        } 
+        if( !req.user ) {
+            console.log('!req.user', req.user)
+           res.status( 401 ).send( 'LOGIN REQUIRED' )
+        } else {
+            db.find_user_session( [response.id] ).then( user => { res.locals.user = user; next() })
+        }
         
-        db.find_user_session( [response.id] ).then( user => res.status( status ).send( user ) )
     },
 
     logout ( req, res, next ) {
@@ -43,14 +45,19 @@ module.exports = {
 
     getServices( req, res, next ) {
         let db = req.app.get( 'db' )
-    
-        db.get_services( [req.body] ).then( services => res.send( services ) )
+        if (res.locals.user){
+            db.get_services( [req.body] ).then( services => res.send( services ) )
+        } else {
+            res.status(403).send('login pl0x')
+        }
     },
 
     getUsers( req, res, next ) {
         let db = req.app.get( 'db' )
 
-        db.get_users( [req.body] ).then( users => res.send( users ) )
+        db.get_users( [req.body] ).then( users => {
+            console.log('users controller', users );
+            res.send( users ) })
     },
 
     getAppts( req, res, next ) {
@@ -60,13 +67,15 @@ module.exports = {
     },
 
     addAppt( req, res, next ) {
-        console.log('req',req.user );
+        // console.log('req',req.user );
         let db = req.app.get( 'db' ),
             { date, time, service } = req.body,
-            user = req.user.id,
-            serviceList = service.map( ( e, i ) => e.services + ' ' + e.price ).join( ', ' )
+            { id, email, name_last, name_first } = req.user,
+            serviceList = service.map( ( e, i ) => e.services + ' ' + e.price ).join( ', ' ),
+            combinedName = ( name_first + ' ' + name_last )
+            
 
-        db.add_appointment( [user, date, time, serviceList] ).then( appt => res.send( appt ) )
+        db.add_appointment( [id, combinedName, date, time, serviceList, email] ).then( appt => res.send( appt ) )
     },
 
     getPhotos( req, res, next ) {
@@ -81,11 +90,11 @@ module.exports = {
     },
 
     checkAdmin( req, res, next ) {
-        console.log('req.user', req.user);
-        if ( req.user && req.user.user_type === 'admin' ) {
-            next()
+        console.log('req.user admin', req.user);
+        if ( res.locals.user && res.locals.user.user_type === 'admin' ) {
+            res.status( 200 ).send( res.locals.user )
         } else {
-            return res.status( 401 ).send( 'notAdmin' )
+            res.status( 200 ).send( res.locals.user )
             }
     }
 

@@ -40,3 +40,9 @@
     border-radius: 10px;
     width: 100%;
 }
+
+@media(min-width:1024px) {
+    .masonry-container{
+        border: none;
+    }
+}

@@ -34,12 +34,11 @@ passport.use( new Auth0Strategy( {
     domain: process.env.AUTH_DOMAIN,
     clientID: process.env.AUTH_CLIENT_ID,
     clientSecret: process.env.AUTH_CLIENT_SECRET,
-    callbackURL: process.env.AUTH_CALLBACK_URL
+    callbackURL: process.env.AUTH_CALLBACK_URL,
 }, function( acessToken, refreshToken, extraParams, profile, done ) {
     const db = app.get( 'db' )
     let userData = profile._json, // coming from google. Find out what it is for FB and other ones you want to use for login.
     auth_id = userData.user_id.split('|')[1]
-
     db.find_user( [auth_id] ).then( user => {
         if ( user[0] ) {
             return done( null, user[0].id )
@@ -54,12 +53,13 @@ passport.use( new Auth0Strategy( {
 
 
 
+
 // Endpoints -------------------
 
 // Auth
 app.get( '/auth', passport.authenticate( 'auth0' ) )
 app.get( '/auth/callback', passport.authenticate( 'auth0', {
-    successRedirect: process.env.AUTH_LANDING_REDIRECT,
+    successRedirect: process.env.AUTH_APPT_REDIRECT,
     failureRedirect: process.env.AUTH_LANDING_REDIRECT
 } ) )
 
@@ -69,7 +69,7 @@ passport.deserializeUser( ( ID, done ) => {
     const db = app.get( 'db' )
     db.find_user_session( [ID] )
     .then( user => {
-        console.log('user', user);
+        // console.log('user', user);
         done( null, user[0] )
     } )
 } )
@@ -89,20 +89,20 @@ app.post( '/api/send' , ( req, res ) => {
             pass: process.env.NODEMAILER_PASS
         }
     })
-    console.log( 'req.body', req.body );
+    console.log( 'req.body in NM', req.body );
     
     const mailOptions = {
         from: process.env.NODEMAILER_USER,
         to: process.env.NODEMAILER_USER,
         subject: 'Appointment Information',
-        html: `<p> Date: ${ req.body[0].appt_date } Time: ${ req.body[0].appt_time } Service: ${ req.body[0].appt_service } </p>`
+        html: `<p> Name: ${ req.body[0].user_name } Date: ${ req.body[0].appt_date } Time: ${ req.body[0].appt_time } Service: ${ req.body[0].appt_service } Email: ${ req.body[0].user_email} </p>`
     }
     
     transporter.sendMail( mailOptions, ( err, info ) => {
         if( err ) {
             console.log( err );
         } else {
-            console.log(info)
+            // console.log(info)
             res.send('if you see this, it worked.')
         }
     })
@@ -110,7 +110,7 @@ app.post( '/api/send' , ( req, res ) => {
 
 // Admin
 
-app.get( '/api/admin' , controller.checkAdmin, controller.getUsers )
+app.get( '/api/admin' ,  controller.getUsers )
 
 // User
 
@@ -123,7 +123,7 @@ app.get( '/api/shop', controller.getProducts )
 
 // Booking
 
-app.get( '/api/services', controller.getServices )
+app.get( '/api/services', controller.verify,  controller.getServices )
 
 // Photos
 
@@ -136,6 +136,7 @@ app.get( '/api/bridal', controller.getPhotos )
 // Appointments
 
 app.post( '/api/addAppt', controller.addAppt )
+app.get( '/api/appointments', controller.getAppts )
 
 
 // Test
