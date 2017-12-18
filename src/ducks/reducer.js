@@ -10,7 +10,8 @@ const initialState = {
     servicesChosen: '',
     day: '',
     time: '',
-    loginMessage: ''
+    loginMessage: '',
+    appointments: []
 }
 
 // Action Types/ Constants
@@ -95,7 +96,7 @@ export function getAllPhotos( photoType ) {
 }
 
 export function getAppts( appt ) {
-    let apptInfo = axios.get( '/api/send' )
+    let apptInfo = axios.get( '/api/appointments' )
         .then( res => res.data )
 
     return {
@@ -120,7 +121,7 @@ export default function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { loginMessage: 'Welcome admin', users: action.payload } )
 
         case GET_USERS + '_REJECTED':
-            return Object.assign( {}, state, { loginMessage: 'Your are not admin!' } )
+            return Object.assign( {}, state, { loginMessage: 'Your are not admin!', users: action.payload } )
 
         case GET_ALL_PRODUCTS + '_PENDING':
             return Object.assign( {}, state, { loading: true } )
@@ -132,7 +133,7 @@ export default function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { loading: false, loginMessage: 'Login Is Required' } )
 
         
-            case ADD_TO_SHOPPING_CART:
+        case ADD_TO_SHOPPING_CART:
             return Object.assign( {}, state, { shoppingCart: [...state.shoppingCart, action.payload] } )
 
         case ADD_TO_SHOPPING_CART + '_REJECTED':
@@ -163,6 +164,12 @@ export default function reducer( state = initialState, action ) {
 
         case GET_ALL_PHOTOS + '_FULFILLED':
             return Object.assign( {}, state, { loading: false, photos: action.payload } )
+
+        case GET_APPTS + '_FULFILLED':
+            return Object.assign( {}, state, { loading: false, appointments: action.payload } )
+
+        case GET_APPTS + '_REJECTED':
+            return Object.assign( {}, state, { loading: false } )
             
         
         default:

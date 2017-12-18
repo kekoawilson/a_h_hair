@@ -37,7 +37,7 @@ class MatAppBar extends Component {
             <div >
                 {/*<IconButton >{logo}</IconButton>*/}
                 {/*<Avatar src='../../assets/logo.png' size={ 50 }/>*/} {/* some kind of getStyles magic here */}
-                <IconButton onClick={ this.goToShop }><ShoppingCart/></IconButton>
+                {/*<IconButton onClick={ this.goToShop }><ShoppingCart/></IconButton>*/}
                 <IconButton onClick={ this.goToAuth }><Person/></IconButton>
             </div>
         )

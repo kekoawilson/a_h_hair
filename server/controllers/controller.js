@@ -55,7 +55,9 @@ module.exports = {
     getUsers( req, res, next ) {
         let db = req.app.get( 'db' )
 
-        db.get_users( [req.body] ).then( users => res.send( users ) )
+        db.get_users( [req.body] ).then( users => {
+            console.log('users controller', users );
+            res.send( users ) })
     },
 
     getAppts( req, res, next ) {

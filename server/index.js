@@ -102,7 +102,7 @@ app.post( '/api/send' , ( req, res ) => {
         if( err ) {
             console.log( err );
         } else {
-            console.log(info)
+            // console.log(info)
             res.send('if you see this, it worked.')
         }
     })
@@ -110,7 +110,7 @@ app.post( '/api/send' , ( req, res ) => {
 
 // Admin
 
-app.get( '/api/admin' , controller.checkAdmin, controller.getUsers )
+app.get( '/api/admin' ,  controller.getUsers )
 
 // User
 
@@ -136,6 +136,7 @@ app.get( '/api/bridal', controller.getPhotos )
 // Appointments
 
 app.post( '/api/addAppt', controller.addAppt )
+app.get( '/api/appointments', controller.getAppts )
 
 
 // Test
