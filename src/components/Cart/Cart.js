@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { removeFromShoppingCart } from '../../ducks/reducer';
+import { Link } from 'react-router-dom';
 import '../Cart/Cart.css';
+import { removeFromShoppingCart } from '../../ducks/reducer';
 import Footer from '../../components/Footer/Footer';
 import { RaisedButton } from 'material-ui';
+import MatGridCart from '../MatUI/MatGridListCart';
 
 
 const style = {
@@ -13,45 +15,60 @@ const style = {
 
 class Cart extends Component {
 
-  
+
   render() {
-    const displayCart = this.props.shoppingCart.map( ( e, i ) => {
+    const displayCart = this.props.shoppingCart.map((e, i) => {
       console.log('cart', this.props.shoppingCart);
       return (
-        <div className='cart-container' key={ i } >
-        
-          <p>{ e.product_name }</p>
-          <img className='cart-img' src={ e.product_img }/>
-          <RaisedButton 
-          label="Remove from cart"
-          onClick={ () => this.props.removeFromShoppingCart( e.product_name ) }
-          style={ style }
-          />
+        <div className='cart-container' key={i} >
+          <div className='cart-img-wrapper'>
+            <img className='cart-img' src={e.product_img} />
+          </div>
+          <div className='cart-info'>
+            <div className='prod-info'>
+              <p>{e.product_name}</p>
+              <p>{e.product_price}</p>
+            </div>
+            <div className='button-wrapper-cart'>
+              <RaisedButton
+                label="Remove"
+                onClick={() => this.props.removeFromShoppingCart(e.product_name)}
+                style={style}
+              />
+            </div>
+          </div>
         </div>
       )
     })
-      return (
-          <div className="Cart">
-            <h2>Viewing your cart! (its probably empty)</h2>
-            <div className='cart-container-wrapper'>
-            
-            { displayCart }
-            
-            </div>
-            <Footer/>
-          </div>
-      );
-    }
-  }
+    return (
+      <div className="Cart">
+        <div className='cart-container-wrapper'>
 
-  let outputActions = {
-    removeFromShoppingCart
+          {displayCart}
+          {/*<MatGridCart/>*/}
+        </div>
+        <div className='button-wrapper'>
+          <Link to='/shop'><RaisedButton
+            className='c-shop'
+            label='Continue Shopping' /></Link>
+          <RaisedButton
+            label='Checkout'
+          />
+        </div>
+        <Footer />
+      </div>
+    );
   }
-  
-  function mapStateToProps( state ) {
+}
 
-    return { shoppingCart: state.shoppingCart }
+let outputActions = {
+  removeFromShoppingCart
+}
 
-  }
-  
-  export default connect( mapStateToProps, outputActions )( Cart );
+function mapStateToProps(state) {
+
+  return { shoppingCart: state.shoppingCart }
+
+}
+
+export default connect(mapStateToProps, outputActions)(Cart);

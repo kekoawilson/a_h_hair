@@ -17,8 +17,13 @@ h3 {
     /* border: dashed orchid 1px; */
     display: flex;
     flex-direction: column;
-    height: 781px;
+    height: 50vh;
     padding-top: 20px;
+    background-image: url('https://i.pinimg.com/originals/75/6d/9d/756d9d73c3c0957e6252c2855a5aec66.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
 }
 
 .color {
@@ -50,6 +55,13 @@ h3 {
     margin-top: 25px;
 }
 
+.middle-section-about {
+    display: flex;
+    height: 64vh;
+    flex-direction: column;
+    align-items: center;
+}
+
 .appt-box {
     height: 20vh;
     width: 100vw;
@@ -76,7 +88,8 @@ h3 {
 .bottom-section-about {
     display: flex;
     flex-direction: column;
-    align-content: space-between;
+    justify-content: center;
+    align-items: center;
     height: 95vh;
     width: auto;
 }
@@ -85,6 +98,34 @@ h3 {
     margin: 5px 0;
 }
 
-@media(max-width:) {
+@media(max-width:425px) {
+    .top-section-about {
+        height: 60vh;
+    }
+    
+}
 
+@media(min-width:768px) {
+    .top-section-about {
+        height: 50vh;
+    }
+    .media1 {
+        margin: 5px 6em;
+    }
+    .middle-section-about {
+        height: 25vh;
+        justify-content: center;
+    }
+    .contact-info {
+        height: 30vh;
+    }
+    .appt-box {
+        height: 10vh;
+    }
+    .about-me {
+        height: 10vh;
+    }
+    .bottom-section-about {
+        height: 80vh;
+    }
 }

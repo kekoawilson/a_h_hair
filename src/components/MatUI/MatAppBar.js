@@ -37,7 +37,7 @@ class MatAppBar extends Component {
             <div >
                 {/*<IconButton >{logo}</IconButton>*/}
                 {/*<Avatar src='../../assets/logo.png' size={ 50 }/>*/} {/* some kind of getStyles magic here */}
-                <IconButton onClick={ this.goToShop }><ShoppingCart/></IconButton>
+                {/*<IconButton onClick={ this.goToShop }><ShoppingCart/></IconButton>*/}
                 <IconButton onClick={ this.goToAuth }><Person/></IconButton>
             </div>
         )
@@ -54,7 +54,7 @@ class MatAppBar extends Component {
             <Link to='/bridals'><MenuItem onClick={ this.closeDrawer }>Bridals</MenuItem></Link>
             <Link to='/gallery'><MenuItem onClick={ this.closeDrawer }>Gallery</MenuItem></Link>
             <Link to='/about'><MenuItem onClick={ this.closeDrawer }>About</MenuItem></Link>
-            <Link to='/shop'><MenuItem onClick={ this.closeDrawer }>Shop</MenuItem></Link>
+            {/*<Link to='/shop'><MenuItem onClick={ this.closeDrawer }>Shop</MenuItem></Link>*/}
             <Link to='/booking'><MenuItem onClick={ this.closeDrawer }>Book Appt</MenuItem></Link>
             
             

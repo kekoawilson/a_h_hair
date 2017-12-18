@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Step, Stepper, StepLabel, RaisedButton, FlatButton, Snackbar } from 'material-ui';
+import '../Booking/Booking.css'
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 // import TextField from 'material-ui/TextField';
 import MatTable from '../MatUI/MatTable'
@@ -55,6 +56,7 @@ class MatStepper extends Component {
         stepIndex: stepIndex + 1,
         finished: stepIndex >= 2,
       }));
+      
     }
   };
 
@@ -71,6 +73,7 @@ class MatStepper extends Component {
       date: '',
       servicesChosen: []
     });
+    
     // onClick={(event) => {
     //   event.preventDefault();
     //   this.setState( {stepIndex: 0, finished: false,  } );
@@ -110,7 +113,6 @@ class MatStepper extends Component {
   }
 
   selectRow( rows ) {
-    console.log('parent', rows);
     let selected = []
     rows.map( ( position, i ) => {
       return selected.push( this.props.servicesList[ position ] )
@@ -142,8 +144,11 @@ class MatStepper extends Component {
     switch ( stepIndex ) {
       case 0:
         return (
+          <div>
+          <h2 className='login-warning'>{ this.props.loginMessage }</h2>
           <MatTable
-          selectRow={ this.selectRow }/>
+              selectRow={ this.selectRow }/>
+          </div>
         );
       case 1:
         return (
@@ -261,7 +266,8 @@ let outputActions = {
 
 function mapStateToProps( state ) {
   return {
-    servicesList: state.servicesList
+    servicesList: state.servicesList,
+    loginMessage: state.loginMessage
   }
 }
 

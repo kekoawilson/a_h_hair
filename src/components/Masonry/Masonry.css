@@ -15,3 +15,9 @@
     align-content: stretch;
     flex-grow: 1;
 }
+
+@media(min-width:1024px) {
+    .masonry {
+        width: 70%;
+    }
+}

@@ -29,7 +29,7 @@
     font-size: 20px;
 }
 
-.bridal-text, h2 {
+.bridal-text {
     margin: 10px;
     line-height: 18px;
 }
@@ -94,6 +94,6 @@
     .bridal-container-wrapper {
         display: flex;
         flex-direction: row;
-        margin: 0 306px;
+        margin: 0 393px;
     }
 }

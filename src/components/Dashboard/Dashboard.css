@@ -35,28 +35,32 @@
 
 /* https://static1.squarespace.com/static/55e49451e4b0fbac6883f7a3/t/55e5dfbfe4b065e3bc87a29d/1441128386052/thewoodsweb4.jpg */
 
-.comb {
-    height: 100vh;
-    width: 120vw;
-}
 
 .top-section-dash {
-    height: 40vh;
+    height: 16vh;
     border: 1px solid black;
     width: auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.hair-salon {
-    height: 10vh;
-    width: auto;
+.dash-h2 {
+    line-height: 30px;
+
 }
+
 
 .middle-section-dash {
-    height: 22vh;
+    height: 16vh;
     border: 1px solid black;
     width: auto;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-container {
