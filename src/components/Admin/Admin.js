@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUsers, getAppts } from '../../ducks/reducer';
-import MatTableAdmin from '../MatUI/MatTableAdmin';
+import MatTableAdmin from './MatTableAdmin';
 
 
 
@@ -20,22 +20,22 @@ class Admin extends Component {
         <p>{ users.name_last}</p>
         <p>{ users.email }</p>
         <p>{ users.user_type }</p>
-        <img src={ users.img } className='users-prof-pic' alt='users profile picture'/>
+        <img src={ users.img } className='users-prof-pic' alt='users profile'/>
         </div>
       )
     })
 
-    let displayAppts = this.props.appointments && this.props.appointments.map( ( e, i ) => {
-      return (
-        <div key={ i }>
-        <p>{e.appt_date}</p>
-        <p>{e.appt_time}</p>
-        <p>{e.appt_service}</p>
-        <p>{e.user_email}</p>
-        <p>{e.user_name}</p>
-        </div>
-      )
-    })
+    // let displayAppts = this.props.appointments && this.props.appointments.map( ( e, i ) => {
+    //   return (
+    //     <div key={ i }>
+    //     <p>{e.appt_date}</p>
+    //     <p>{e.appt_time}</p>
+    //     <p>{e.appt_service}</p>
+    //     <p>{e.user_email}</p>
+    //     <p>{e.user_name}</p>
+    //     </div>
+    //   )
+    // })
       return (
           <div className="Admin">
             <h2>{ this.props.loginMessage }</h2>

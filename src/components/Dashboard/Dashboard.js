@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import 'reset-css';
 import { connect } from 'react-redux';
-import { getAllPhotos } from '../../ducks/reducer';
+import { getAllPhotos, getServicesAvailable } from '../../ducks/reducer';
 import '../Dashboard/Dashboard.css';
 // import Masonry from '../Masonry/Masonry'
 import MatGridListDash from '../MatUI/MatGridListDash'
-import MatDialog from '../MatUI/MatDialog'
+import MatDialog from './MatDialog'
 // import model from '../../assets/ig-photos/18011421_1840155656248312_6837133665131036672_n.jpg'
 import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg'
 import Footer from '../../components/Footer/Footer';
@@ -99,11 +99,11 @@ class Dashboard extends Component {
 // <div className='box-8'>{ displayPhoto[103] }</div>
 
 let outputActions = {
-  getAllPhotos
+  getAllPhotos, getServicesAvailable
 }
 
 function mapStateToProps( state ) {
-  return { photos: state.photos }
+  return { photos: state.photos, servicesList: state.services }
 }
 
 export default connect( mapStateToProps, outputActions )( Dashboard );

@@ -124,6 +124,7 @@ app.get( '/api/shop', controller.getProducts )
 // Booking
 
 app.get( '/api/services', controller.verify,  controller.getServices )
+app.get( '/api/servicesAvailable', controller.getServicesAvailable )
 
 // Photos
 

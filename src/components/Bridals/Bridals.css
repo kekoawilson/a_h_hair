@@ -108,6 +108,21 @@
     .bridal-container-wrapper {
         display: flex;
         flex-direction: row;
-        margin: 0 405px;
+        margin: 0 306px;
     }
 }
+
+@media(min-width:1800px) {
+    /* .bridal-text-wrapper {
+        height: 18vh;
+    }
+    .bridal-text {
+        margin: 20px;
+    } */
+    .bridal-container-wrapper {
+        display: flex;
+        flex-direction: row;
+        margin: 0 409px;
+    }
+}
+

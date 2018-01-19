@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'reset-css';
 import '../About/About.css';
-import addee from '../../assets/ig-photos/18879253_225878457929064_2360960397537705984_n.jpg';
+// import addee from '../../assets/ig-photos/18879253_225878457929064_2360960397537705984_n.jpg';
 import addee2 from '../../assets/IMG_1099_edited.jpeg';
 import Footer from '../../components/Footer/Footer';
 

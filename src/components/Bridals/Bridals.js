@@ -17,7 +17,7 @@ class Bridals extends Component {
         return (
           <div className='bridal-container' key={ i }>
           
-          <img className='bridal-pic' src={ e.photo_url } alt='bridals'/>
+          <img className='bridal-pic' src={ e.photo_url } alt='Bridals'/>
           
           </div>
         )

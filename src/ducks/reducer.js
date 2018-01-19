@@ -22,6 +22,7 @@ const ADD_TO_SHOPPING_CART = 'ADD_TO_SHOPPING_CART'
 const REMOVE_FROM_SHOPPING_CART = 'REMOVE_FROM_SHOPPING_CART'
 const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 const GET_ALL_SERVICES = 'GET_ALL_SERVICES'
+const GET_SERVICES_AVAILABLE = 'GET_SERVICES_AVAILABLE'
 const GET_ALL_PHOTOS = 'GET_ALL_PHOTOS'
 const GET_APPTS = 'GET_APPTS'
 
@@ -85,6 +86,16 @@ export function getAllServices( services ) {
     }
 }
 
+export function getServicesAvailable( serviceList ) {
+    let servicesAvailable = axios.get( '/api/servicesAvailable' )
+        .then( res => res.data )
+
+    return {
+        type: GET_ALL_SERVICES,
+        payload: servicesAvailable
+    }
+}
+
 export function getAllPhotos( photoType ) {
     let photosInfo = axios.get( `/api/${photoType}` )
         .then( res => res.data )
@@ -97,7 +108,7 @@ export function getAllPhotos( photoType ) {
 
 export function getAppts( appt ) {
     let apptInfo = axios.get( '/api/appointments' )
-        .then( res => res.data )
+        .then( res => res.data ) 
 
     return {
         type: GET_APPTS,
@@ -141,7 +152,7 @@ export default function reducer( state = initialState, action ) {
         
         case REMOVE_FROM_SHOPPING_CART:
             let newArray = state.shoppingCart.slice() // making a copy of state
-            let newIndex = newArray.map( e => e.product_name ).indexOf( action.payload ) // mapping over the new copy of state and returning an obj. entering that obj using e.product_name to get that key off the obj. looking for the where that key exists and checking for matches from action.payload (product_name coming from front end)
+            let newIndex = newArray.map( e => e.product_name ).indexOf( action.payload ) // mapping over the new copy of state and returning an obj. accessing that obj using e.product_name to get that key off the obj. looking for where that key exists and checking for matches from action.payload (product_name coming from front end)
             if( newIndex !== -1 ) {  // saying if there is a match splice it out, if not, do nothing.
                 newArray.splice( newIndex, 1 )
             } else {
@@ -157,6 +168,15 @@ export default function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { loading: false, servicesList: action.payload, loginMessage: '' } )
 
         case GET_ALL_SERVICES + '_REJECTED':
+            return Object.assign( {}, state, { loading: false, loginMessage: 'Login Is Required To Select Services' } )
+
+        case GET_SERVICES_AVAILABLE + '_PENDING':
+            return Object.assign( {}, state, { loading: true } )
+
+        case GET_SERVICES_AVAILABLE + '_FULFILLED':
+            return Object.assign( {}, state, { loading: false, servicesList: action.payload, loginMessage: '' } )
+
+        case GET_SERVICES_AVAILABLE + '_REJECTED':
             return Object.assign( {}, state, { loading: false, loginMessage: 'Login Is Required To Select Services' } )
 
         case GET_ALL_PHOTOS + '_PENDING':

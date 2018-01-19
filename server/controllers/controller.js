@@ -48,8 +48,13 @@ module.exports = {
         if (res.locals.user){
             db.get_services( [req.body] ).then( services => res.send( services ) )
         } else {
-            res.status(403).send('login pl0x')
+            res.status(403).send('Login please')
         }
+    },
+
+    getServicesAvailable( req, res, next ) {
+        let db = req.app.get( 'db' )
+            db.get_services( [req.body] ).then( services => res.send( services ) )
     },
 
     getUsers( req, res, next ) {

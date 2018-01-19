@@ -4,7 +4,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup, Table} from 'material-ui';
-import { getAllServices } from '../../ducks/reducer';
+import { getServicesAvailable } from '../../ducks/reducer';
 // import ActionFavorite from 'material-ui/svg-icons/action/favorite'
 // import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
 
@@ -33,7 +33,7 @@ class MatDialog extends Component {
   }
 
   componentDidMount() {
-      this.props.getAllServices()
+      this.props.getServicesAvailable()
   }
 
   handleOpen = () => {
@@ -91,7 +91,7 @@ class MatDialog extends Component {
 }
 
 let outputActions = {
-    getAllServices
+    getServicesAvailable
 }
 
 function mapStateToProps( state ) {

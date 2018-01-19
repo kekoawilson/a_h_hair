@@ -5,7 +5,7 @@ import '../Cart/Cart.css';
 import { removeFromShoppingCart } from '../../ducks/reducer';
 import Footer from '../../components/Footer/Footer';
 import { RaisedButton } from 'material-ui';
-import MatGridCart from '../MatUI/MatGridListCart';
+// import MatGridCart from '../MatUI/MatGridListCart';
 
 
 const style = {
@@ -22,7 +22,7 @@ class Cart extends Component {
       return (
         <div className='cart-container' key={i} >
           <div className='cart-img-wrapper'>
-            <img className='cart-img' src={e.product_img} />
+            <img className='cart-img' src={e.product_img} alt='Cart'/>
           </div>
           <div className='cart-info'>
             <div className='prod-info'>
