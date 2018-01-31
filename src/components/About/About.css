@@ -51,14 +51,15 @@ h3 {
 
 .about-me {
     /* border: greenyellow 1px solid; */
-    height: 200px;
+    height: 355px;
     width: 100vw;
     margin-top: 25px;
+    padding: 0 15px;
 }
 
 .middle-section-about {
     display: flex;
-    height: 64vh;
+    height: 70vh;
     flex-direction: column;
     align-items: center;
 }
@@ -75,7 +76,7 @@ h3 {
 
 .contact-info {
     font-size: 16px;
-    height: 44vh;
+    height: 30vh;
     width: 100vw;
     line-height: 30px;
     padding-top: 5px;
@@ -91,7 +92,7 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 95vh;
+    height: 78vh;
     width: auto;
 }
 
@@ -106,6 +107,7 @@ h3 {
     .appt-box{
         height: 38vh;
         font-size: 17px;
+        margin-top: 18px;
     }
     .about-text {
         line-height: 20px;
