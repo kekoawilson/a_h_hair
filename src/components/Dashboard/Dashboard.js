@@ -59,7 +59,7 @@ class Dashboard extends Component {
     </div> */}
           <div className='parallax-photo'>
             <div className='logo-container' > 
-            <img className='logo-dash' src={ logo } alt='logo'/>
+              {/*<img className='logo-dash' src={ logo } alt='logo'/>*/}
             </div>
           </div>
           <div className='top-section-dash'>

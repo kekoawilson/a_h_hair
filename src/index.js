@@ -15,7 +15,7 @@ import { white, black } from 'material-ui/styles/colors';
 
 const muiTheme = getMuiTheme({
     spacing: spacing,
-    fontFamily: 'Roboto, sans-serif',
+    fontFamily: 'Montserrat, sans-serif',
     "palette": {
         "primary1Color": "#bdbdbd",
         "primary2Color": "#bdbdbd",
@@ -63,7 +63,8 @@ const muiTheme = getMuiTheme({
     },
     "raisedButton": {
         primaryColor: "#bdbdbd",
-        color: "#f06292",
+        // color: "#f06292",
+        color: black,
         textColor: white,
         
     },

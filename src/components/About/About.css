@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    /* font-family: 'Poiret One'; */
+    font-family: 'Montserrat', sans-serif;
 }
 
 h2 {
@@ -83,7 +83,7 @@ h3 {
 }
 
 .iframe-about {
-    height: 45vh;
+    height: 35vh;
 }
 
 .bottom-section-about {
@@ -119,30 +119,36 @@ h3 {
     }
     .media1 {
         margin: 5px 6em;
+        line-height: 30px;
     }
     .about-text {
         margin: 5px 6em;
+        line-height: 25px;
 
     }
     .middle-section-about {
-        height: 34vh;
+        height: 53vh;
         justify-content: center;
     }
     .contact-info {
         height: 30vh;
     }
     .appt-box {
-        height: 19vh;
+        height: 28vh;
+        font-size: 19px;
+        width: 25vw;
+        border: 1px solid black;
         font-size: 19px;
     }
+    .appt-text {
+        margin: 5px;
+        line-height: 30px;
+    }
     .about-me {
-        height: 13vh;
+        height: 21vh;
         font-size: 19px;
     }
     .bottom-section-about {
-        height: 80vh;
-    }
-    .about-text {
-        line-height: 20px;
+        height: 65vh;
     }
 }

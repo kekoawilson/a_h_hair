@@ -17,25 +17,26 @@ class About extends Component {
           </div>
           <img className='addee2' src={addee2} alt='addee' />
 
-          </section>
-          
-          <section className='middle-section-about'>
+        </section>
+
+        <section className='middle-section-about'>
 
           <div className='about-me'>
 
-          <h2 className='media1'>About Me</h2>
-          <p className='media1, about-text'>Lorem ipsum dolor amet affogato ugh yuccie, four dollar toast poke raclette paleo chillwave. Lumber succulents gentrify kombucha 90's YOLO. Flannel hoodie gochujang prism irony. Hammock you probably haven't heard of them hashtag migas, craft beer biodiesel occupy readymade woke vinyl tumblr gastropub swag. Woke gentrify marfa paleo brooklyn mumblecore pabst XOXO blue bottle.</p>
-        </div>
+            <h2 className='media1'>About Me</h2>
+            <p className='media1, about-text'>Hi I’m Addee and I’ve been doing hair for almost 6 years. I have been doing hair in my home in Herriman for 2 years. I love that I get to do hair out of my home and run my own business. It’s beneficial to my clients because it’s convenient and flexible. My favorite part of my job is my clients! I have met such amazing people and I love that I get to chat with my clients all day. They make my job so much fun! I love color, cutting and updos. I started doing bridal hair 3 years ago and it has become one of my favorite things! I’ve been so lucky to work with the sweetest brides and bridal parties. I have an incredible husband that works hard so I can do what I love. I’m grateful to work in the beauty industry and help clients feel beautiful every day!</p>
+
+          </div>
 
 
-          
+
           <div className='appt-box'>
-          
-          <h2 className='media1'>Contact</h2>
-            <h3 className='media1'>For inquiries or to book an appointment:
-          Call or Text me at 801.824.0344 or book your appointments online by clicking <Link to='/booking'>Here!</Link></h3>
 
-            <p className='media1'>*Please allow 24 hrs for response*</p>
+            <h2 className='media1'>Contact</h2>
+            <h3 className='appt-text'>For inquiries or to book an appointment:</h3>
+            <h3 className='appt-text'>Call or Text me at 801.824.0344 or book your appointments online by clicking <Link to='/booking'>Here!</Link></h3>
+
+            <p className='appt-text'>*Please allow 24 hrs for response*</p>
 
           </div>
 

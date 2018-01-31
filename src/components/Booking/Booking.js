@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../../ducks/reducer';
 import MatStepper from '../MatUI/MatStepper';
-import SnackBar from 'material-ui/Snackbar'
+import SnackBar from 'material-ui/Snackbar';
+import './Booking.css';
 
 const dateStyle = {
     margin: 'auto'

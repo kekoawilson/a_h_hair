@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .bg-image {
@@ -23,6 +24,7 @@
 .bridal-text-wrapper {
     height: 24vh;
     width: 100vw;
+    margin: 10px;
 }
         
 .h2 {
