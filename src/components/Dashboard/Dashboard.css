@@ -27,7 +27,7 @@
     height: 100vh;
     width: 100vw;
     /* background-image: url("https://static1.squarespace.com/static/54fef3cee4b0a7a5db2fb2c2/t/59824bb2bebafb576aeb2bc2/1501711299203/"); */
-    background-image: url('../../assets/addee-homepage-copy-desktop.png');
+    background-image: url('../../assets/fullpic-copy.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: top center;
@@ -94,7 +94,7 @@ iframe {
     .parallax-photo {
         height: 100vh;
         width: 100vw;
-        background-image: url('../../assets/addee-homepage-copy-desktop.png');
+        background-image: url('../../assets/fullpic-copy.jpg');
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-position: top center;
@@ -106,7 +106,7 @@ iframe {
     .parallax-photo {
         height: 100vh;
         width: 100vw;
-        background-image: url('../../assets/addee-homepage-copy-mobile.png');
+        background-image: url('../../assets/fullpic-copy.jpg');
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-position: top center;
