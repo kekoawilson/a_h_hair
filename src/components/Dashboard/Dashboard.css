@@ -117,7 +117,7 @@ iframe {
     .parallax-photo {
         height: 100vh;
         width: auto;
-        background-image: url('../../assets/fullpic-copy-mobile-copy.jpg');
+        background-image: url('../../assets/fullpic-copy-mobile.jpg');
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-position: top center;
