@@ -7,7 +7,7 @@ import '../Dashboard/Dashboard.css';
 import MatGridListDash from '../MatUI/MatGridListDash'
 import MatDialog from './MatDialog'
 // import model from '../../assets/ig-photos/18011421_1840155656248312_6837133665131036672_n.jpg'
-import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg'
+// import logo from '../../assets/Addee_Hunt_Hair_Logo-3.svg'
 import Footer from '../../components/Footer/Footer';
 
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import {RadioButton, RadioButtonGroup, Table} from 'material-ui';
+import {RadioButton, RadioButtonGroup } from 'material-ui';
 import { getServicesAvailable } from '../../ducks/reducer';
 // import ActionFavorite from 'material-ui/svg-icons/action/favorite'
 // import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
