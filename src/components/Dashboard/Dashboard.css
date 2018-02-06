@@ -81,13 +81,14 @@
     text-align: center;
     height: 53vh;
     width: auto;
-    border: black solid 1px;
+    border-bottom: black solid 1px;
 }
 
 
 iframe {
     height: 53vh;
     width: 100vw;
+    border-bottom: 1px solid black;
 }
 
 @media (max-width: 1440px ) and (min-width: 1024px) {
